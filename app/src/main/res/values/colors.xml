@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#73f3ff</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#c873f4</color>
+    <color name="bg_screen2">#c873f4</color>
+    <color name="bg_screen3">#c873f4</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#a854d4</color>
+    <color name="dot_dark_screen2">#a854d4</color>
+    <color name="dot_dark_screen3">#a854d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#e4b5fc</color>
+    <color name="dot_light_screen2">#e4b5fc</color>
+    <color name="dot_light_screen3">#e4b5fc</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+
+    <color name="color_white">#ffffff</color>
+    <color name="color_gray">#899bab</color>
+    <color name="color_grayone">#FFCDCDCE</color>
+    <color name="color_graym">#FFD5D8DA</color>
+    <color name="color_lightGray">#f8f8f8</color>
+    <color name="color_btn">#8e63e6</color>
+    <color name="grayIconTint">#727272</color>
+    <color name="color_blue">#73f3ff</color>
+    <color name="transparent">#00000000</color>
+    <color name="gcolor">#eeeff3</color>
+
+    <color name="gradientPeriodicClouds_c1">#ffffff</color>
+    <color name="gradientPeriodicClouds_c2">#ffffff</color>
+    <color name="gradientPeriodicClouds_c3">#ffffff</color>
+
+    <array name="gradientPeriodicClouds">
+        <item>@color/gradientPeriodicClouds_c1</item>
+        <item>@color/gradientPeriodicClouds_c2</item>
+        <item>@color/gradientPeriodicClouds_c3</item>
+    </array>
+    <color name="gradientCloudy_c1">#62bff5</color>
+    <color name="gradientCloudy_c2">#61b3e5</color>
+    <color name="gradientCloudy_c3">#5d8fb2</color>
+
+    <array name="gradientCloudy">
+        <item>@color/gradientCloudy_c1</item>
+        <item>@color/gradientCloudy_c2</item>
+        <item>@color/gradientCloudy_c3</item>
+    </array>
+
+    <color name="gradientMostlyCloudy_c1">#51bbf5</color>
+    <color name="gradientMostlyCloudy_c2">#71c3ee</color>
+    <color name="gradientMostlyCloudy_c3">#f3e5d2</color>
+
+    <array name="gradientMostlyCloudy">
+        <item>@color/gradientMostlyCloudy_c1</item>
+        <item>@color/gradientMostlyCloudy_c2</item>
+        <item>@color/gradientMostlyCloudy_c3</item>
+    </array>
+</resources>
