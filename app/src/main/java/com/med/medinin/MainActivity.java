@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.med.medinin.fragment.AppointmentsFragment;
+import com.med.medinin.fragment.HomeFragment;
 import com.med.medinin.fragment.SettingFragment;
 import com.med.medinin.weather.WeatherFragment;
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         }
         fragmentManager = getSupportFragmentManager();
         if(savedInstanceState==null){
-            fragment = new WeatherFragment();
+            fragment = new HomeFragment();
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.frame_fragment_containers, fragment).commit();
         }
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         lineHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragment = new WeatherFragment();
+                fragment = new HomeFragment();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.frame_fragment_containers, fragment); // f2_container is your FrameLayout container
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

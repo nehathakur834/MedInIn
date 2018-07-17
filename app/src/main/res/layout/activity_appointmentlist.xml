@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@drawable/bg_home">
 
@@ -14,49 +15,84 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           >
+            android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 android:text="Back"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:layout_alignParentLeft="true"
                 android:textColor="@color/color_white"
-                android:layout_margin="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"/>
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="16dp"
+                android:layout_height="15dp"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/icon_serach"
-                android:layout_margin="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"/>
 
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/circle">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/color_white"/>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="My Appointments"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="5dp"
             android:layout_gravity="center"
-            android:textStyle="bold"
+            android:textSize="20sp"
             android:textColor="@color/color_white"
             android:gravity="center"/>
 
-
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginBottom="20dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="10dp"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    card_view:cardElevation="10dp"
+    card_view:cardPreventCornerOverlap="false"
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/shape"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
 
@@ -79,8 +115,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:background="#e4b5fc"
-                android:backgroundTint="#e4b5fc"
+                android:background="#a854d4"
+                android:backgroundTint="#a854d4"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/ic_add"
@@ -90,6 +126,9 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"/>
         </RelativeLayout>
+
     </LinearLayout>
+</android.support.v7.widget.CardView>
     </LinearLayout>
+
 </RelativeLayout>

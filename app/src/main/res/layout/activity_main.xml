@@ -19,7 +19,7 @@
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="@color/gcolor"
@@ -29,7 +29,7 @@
         <RelativeLayout
             android:id="@+id/llyt_home"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:orientation="vertical">
@@ -61,7 +61,7 @@
         <RelativeLayout
             android:id="@+id/llyt_appointment"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:orientation="vertical">
@@ -89,7 +89,7 @@
         <RelativeLayout
             android:id="@+id/llyt_setting"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:orientation="vertical">

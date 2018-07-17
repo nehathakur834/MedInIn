@@ -46,6 +46,8 @@
     <color name="color_blue">#73f3ff</color>
     <color name="transparent">#00000000</color>
     <color name="gcolor">#eeeff3</color>
+    <color name="blue_appcolor">#f2fdff</color>
+    <color name="darkblue_color">#f2fdff</color>
 
     <color name="gradientPeriodicClouds_c1">#ffffff</color>
     <color name="gradientPeriodicClouds_c2">#ffffff</color>
