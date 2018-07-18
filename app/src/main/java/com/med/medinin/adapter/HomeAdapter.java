@@ -1,11 +1,15 @@
 package com.med.medinin.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,7 +27,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
 
     Context context;
     List<DataModel> dataModelList;
-
+    int row_index;
     public HomeAdapter(Context context, List<DataModel> dataModelList) {
         this.context = context;
         this.dataModelList = dataModelList;
@@ -36,15 +40,31 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
     }
 
     @Override
-    public void onBindViewHolder(HomeAdapter.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(HomeAdapter.CustomViewHolder holder, final int position) {
 
-
-        Glide.with(holder.image.getContext())
-                .load(R.drawable.icon_heart);
-
-
+        Glide.with(context)
+                .load(R.drawable.med_stethoscope).into(holder.image);
         holder.tv_lendingamount.setText(dataModelList.get(position).getName());
+        holder.row_linearlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                row_index = position;
+                notifyDataSetChanged();
+            }
+        });
+        if(row_index==position){
+            holder.image.setColorFilter(Color.argb(255, 255, 255, 255));
+            holder.row_linearlayout.setBackgroundColor(Color.parseColor("#2cd0f7"));
+            holder.tv_lendingamount.setTextColor(Color.parseColor("#ffffff"));
+            holder.image.setColorFilter(ContextCompat.getColor(context, R.color.color_white),PorterDuff.Mode.SRC_IN);
+        }
+        else
+        {
+            holder.image.setColorFilter(ContextCompat.getColor(context, R.color.color_gray),PorterDuff.Mode.SRC_IN);
+            holder.row_linearlayout.setBackgroundColor(Color.parseColor("#ffffff"));
+            holder.tv_lendingamount.setTextColor(Color.parseColor("#899bab"));
 
+        }
 
     }
 
@@ -55,12 +75,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView tv_lendingid, tv_lendingamount, tv_lendingbonus ;
+        TextView tv_lendingid, tv_lendingamount, tv_lendingbonus;
+        LinearLayout row_linearlayout;
 
         public CustomViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image_recycler);
             tv_lendingamount = itemView.findViewById(R.id.title_recycler);
+            row_linearlayout = (LinearLayout) itemView.findViewById(R.id.linear_lyt);
 
 
         }

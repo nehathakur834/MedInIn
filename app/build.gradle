@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.med.medinin"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -47,4 +47,5 @@ dependencies {
     implementation 'hyogeun.github.com.colorratingbar:ColorRatingBar:1.0.1'
     implementation 'com.akaita.android:circular-seek-bar:1.0'
     implementation 'com.karumi:dexter:4.2.0'
+    implementation 'com.intuit.ssp:ssp-android:1.0.5'
 }
