@@ -1,136 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/bg_home">
+    tools:context=".MainActivity">
 
-    <LinearLayout
+
+    <FrameLayout
+        android:id="@+id/frame_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_above="@+id/linear">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="Back"
-                android:textSize="18sp"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/color_white"
-                android:layout_margin="10dp"/>
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/icon_serach"
-                android:layout_margin="10dp"/>
-
-        </RelativeLayout>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cardiology Clinic"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/color_white"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2731, Despord Street,QA"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_gravity="center"
-            android:textColor="@color/color_white"
-            android:gravity="center"/>
+    </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/shape"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-      >
+        android:background="@color/gcolor"
+        android:weightSum="3">
 
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            android:background="@drawable/ic_arrow_down"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:layout_weight="1.5"
-            android:padding="3dp"
-            android:text="Sort" />
-
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.2"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_listicon"/>
-
-        <ImageView
-            android:id="@+id/map_view"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/ic_place"/>
-
-
-    </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:id="@+id/llyt_home"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="@color/transparent"
             android:orientation="vertical">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_clinic"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scrollbars="vertical" />
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="bottom|end"
-               android:background="@drawable/icon_roundtwo"
-                android:layout_alignParentRight="true"
+                android:id="@+id/img_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_explore_blue" />
+
+
+            <View
+                android:layout_gravity="bottom"
+                android:id="@+id/home_view"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:background="@color/color_blue"/>
         </RelativeLayout>
+
+   <View
+       android:layout_width="1.5dp"
+       android:layout_height="30dp"
+       android:layout_gravity="center"
+       android:background="@color/color_gray"/>
+
+        <RelativeLayout
+            android:id="@+id/llyt_appointment"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_appoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_cal" />
+            <View
+                android:id="@+id/home_appoitment"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/gcolor"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1.5dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@color/color_gray"/>
+        <RelativeLayout
+            android:id="@+id/llyt_setting"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_settings" />
+            <View
+                android:id="@+id/home_setting"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/gcolor"/>
+
+        </RelativeLayout>
+
     </LinearLayout>
-    </LinearLayout>
+
+    <!--<android.support.design.widget.BottomNavigationView-->
+    <!--android:id="@+id/navigation"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--app:itemBackground="@color/gcolor"-->
+
+    <!--app:menu="@menu/bottom_navigation"/>-->
+
 </RelativeLayout>

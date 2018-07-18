@@ -3,7 +3,6 @@ package com.med.medinin.weather;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Address;
@@ -21,9 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -53,10 +50,9 @@ import com.med.medinin.BuildConfig;
 import com.med.medinin.MainActivity;
 import com.med.medinin.R;
 
-import com.med.medinin.activities.ClinicListActivity;
 import com.med.medinin.activities.DiscreteScrollViewOptions;
-import com.med.medinin.activities.MapsActivity;
 import com.med.medinin.activities.MapsActivity2;
+
 import com.med.medinin.activities.SearchClinicActivity;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
@@ -169,7 +165,7 @@ public class WeatherFragment extends Fragment implements
         tvAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(getActivity(), MapsActivity.class);
+//                Intent i = new Intent(getActivity(), MapsFragment.class);
 //                startActivity(i);
             }
         });

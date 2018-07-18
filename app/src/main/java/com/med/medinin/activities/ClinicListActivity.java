@@ -1,63 +1,132 @@
 package com.med.medinin.activities;
 
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.med.medinin.R;
-import com.med.medinin.adapter.ClinicListAdapter;
+import com.med.medinin.fragment.AppointmentsFragment;
+import com.med.medinin.fragment.ClinicListFragment;
+import com.med.medinin.fragment.HomeFragment;
+import com.med.medinin.fragment.SettingFragment;
 import com.med.medinin.model.ClinicListModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClinicListActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    LinearLayoutManager linearLayoutManager;
-    private List<ClinicListModel> clinicListModelList = null;
-    ImageView mapView;
+    Fragment fragment;
+    private FragmentManager fragmentManager;
+    RelativeLayout lineHome,linearAppoint,linearSetting;
+    ImageView imageHome,imgAppoint,imgsetting;
+    View homeview,appointview,settingview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliniclist);
-        lendingTableItemList();
-        mapView=findViewById(R.id.map_view);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_clinic);
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);
-        ClinicListAdapter clinicListAdapter = new ClinicListAdapter(ClinicListActivity.this, clinicListModelList);
-        recyclerView.setAdapter(clinicListAdapter);
-        mapView.setOnClickListener(new View.OnClickListener() {
+
+        fragmentManager = getSupportFragmentManager();
+        if(savedInstanceState==null){
+            fragment = new ClinicListFragment();
+            final FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.frame_fragment, fragment).commit();
+        }
+
+        lineHome=findViewById(R.id.llyt_home);
+        linearAppoint=findViewById(R.id.llyt_appointment);
+        linearSetting=findViewById(R.id.llyt_setting);
+        imageHome=findViewById(R.id.img_home);
+        imgAppoint=findViewById(R.id.img_appoint);
+        imgsetting=findViewById(R.id.img_setting);
+        homeview=findViewById(R.id.home_view);
+        appointview=findViewById(R.id.home_appoitment);
+        settingview=findViewById(R.id.home_setting);
+/*        imageHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ClinicListActivity.this, MapsActivity.class);
-                startActivity(i);
+                imageHome.setImageResource(R.drawable.ic_explore_blue);
+            }
+        });
+        imgAppoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageHome.setImageResource(R.drawable.ic_explore_blue);
+            }
+        });
+        imgsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageHome.setImageResource(R.drawable.ic_explore_blue);
+            }
+        });*/
+
+        lineHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new ClinicListFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment, fragment); // f2_container is your FrameLayout container
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                imageHome.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+
+                homeview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                appointview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+            }
+        });
+        linearAppoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new AppointmentsFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment, fragment); // f2_container is your FrameLayout container
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imageHome.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+
+                appointview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                homeview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+
+
+            }
+        });
+        linearSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new SettingFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment, fragment); // f2_container is your FrameLayout container
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imageHome.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+
+                settingview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                appointview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                homeview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+
             }
         });
     }
-    /* Initialise car items in list. */
-    private void lendingTableItemList() {
-        if (clinicListModelList == null) {
-            clinicListModelList = new ArrayList<ClinicListModel>();
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
 
-
-        }
-    }
 }

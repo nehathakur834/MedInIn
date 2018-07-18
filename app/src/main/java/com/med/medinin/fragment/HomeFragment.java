@@ -16,6 +16,8 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -48,8 +50,9 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import com.med.medinin.BuildConfig;
 import com.med.medinin.MainActivity;
 import com.med.medinin.R;
-import com.med.medinin.activities.ClinicListActivity;
+
 import com.med.medinin.activities.MapsActivity2;
+
 import com.med.medinin.activities.SearchClinicActivity;
 import com.med.medinin.adapter.ClinicListAdapter;
 import com.med.medinin.adapter.HomeAdapter;
@@ -75,7 +78,8 @@ public class HomeFragment extends Fragment {
     private List<DataModel> dataModelList = null;
     private LocationManager locationManager;
     private String provider;
-
+    Fragment fragment;
+    private FragmentManager fragmentManager;
     private static final String TAG = "bmn";
 
 
@@ -118,6 +122,13 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_home, container, false);
+        //fragmentManager = getFragmentManager();
+//        if(savedInstanceState==null){
+//            fragment = new SearchClinicFragment();
+//            final FragmentTransaction transaction = fragmentManager.beginTransaction();
+//            transaction.replace(R.id.frame_frag, fragment).commit();
+//        }
+
         lendingTableItemList();
         recyclerView = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -139,8 +150,9 @@ public class HomeFragment extends Fragment {
         tvAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(getActivity(), MapsActivity.class);
+//                Intent i = new Intent(getActivity(), MapsFragment.class);
 //                startActivity(i);
+
             }
         });
         Dexter.withActivity(getActivity())
@@ -174,8 +186,15 @@ public class HomeFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), SearchClinicActivity.class);
-                startActivity(i);
+             Intent i = new Intent(getActivity(), SearchClinicActivity.class);
+              startActivity(i);
+
+//               fragment = new SearchClinicFragment();
+//                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.frame_frag, fragment); // f2_container is your FrameLayout container
+//                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
             }
         });
         return view;
