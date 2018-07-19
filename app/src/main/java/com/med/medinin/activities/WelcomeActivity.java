@@ -20,8 +20,7 @@ import android.widget.TextView;
 
 import com.med.medinin.MainActivity;
 import com.med.medinin.R;
-import com.med.medinin.weather.WeatherActivity;
-import com.med.medinin.weather.WeatherFragment;
+
 
 
 public class WelcomeActivity extends AppCompatActivity {

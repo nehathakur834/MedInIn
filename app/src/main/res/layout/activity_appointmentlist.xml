@@ -112,8 +112,8 @@
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_50ssp"
+                android:layout_height="@dimen/_50ssp"
                 android:layout_gravity="bottom|end"
                 android:background="#a854d4"
                 android:backgroundTint="#a854d4"

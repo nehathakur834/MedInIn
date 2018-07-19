@@ -50,6 +50,10 @@
             android:name=".activities.ClinicListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MapStartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -62,10 +66,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".activities.MapsFragment"
-            android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.TimeSlotActivity"
             android:screenOrientation="portrait"

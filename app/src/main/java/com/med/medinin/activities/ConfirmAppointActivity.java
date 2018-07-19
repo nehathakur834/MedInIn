@@ -14,4 +14,9 @@ public class ConfirmAppointActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirmapoint);
 
     }
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

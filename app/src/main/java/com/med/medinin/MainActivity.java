@@ -24,7 +24,7 @@ import android.widget.RelativeLayout;
 import com.med.medinin.fragment.AppointmentsFragment;
 import com.med.medinin.fragment.HomeFragment;
 import com.med.medinin.fragment.SettingFragment;
-import com.med.medinin.weather.WeatherFragment;
+
 
 import static com.med.medinin.utils.CommonMethods.hasPermissions;
 
@@ -161,5 +161,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 }

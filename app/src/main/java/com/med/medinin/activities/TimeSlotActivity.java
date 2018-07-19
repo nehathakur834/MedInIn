@@ -1,123 +1,135 @@
 package com.med.medinin.activities;
 
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.med.medinin.R;
+import com.med.medinin.fragment.AppointmentsFragment;
+import com.med.medinin.fragment.ClinicListFragment;
+import com.med.medinin.fragment.SettingFragment;
+import com.med.medinin.fragment.TimeSlotFragment;
 
 public class TimeSlotActivity extends AppCompatActivity {
 
-    TextView tvMornOne,tvMornTwo,tvMornThree;
-    TextView tvEvenOne,tvEvenTwo,tvEvenThree;
-    TextView tvAftrOne,tvAftrTwo,tvAftrThree,tvAftrFour,tvAftrFive,tvAftrSix;
+    Fragment fragment;
+    private FragmentManager fragmentManager;
+    RelativeLayout lineHome,linearAppoint,linearSetting;
+    ImageView imageHome,imgAppoint,imgsetting;
+    View homeview,appointview,settingview;
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeslot);
-        tvMornOne=findViewById(R.id.id_morn_one);
-        tvMornTwo=findViewById(R.id.id_morn_two);
-        tvMornThree=findViewById(R.id.id_morn_three);
-        tvMornOne.setOnClickListener(new View.OnClickListener() {
+
+        fragmentManager = getSupportFragmentManager();
+        if(savedInstanceState==null){
+            fragment = new TimeSlotFragment();
+            final FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.frame_fragment_timeslot, fragment).commit();
+        }
+
+        lineHome=findViewById(R.id.llyt_home);
+        linearAppoint=findViewById(R.id.llyt_appointment);
+        linearSetting=findViewById(R.id.llyt_setting);
+        imageHome=findViewById(R.id.img_home);
+        imgAppoint=findViewById(R.id.img_appoint);
+        imgsetting=findViewById(R.id.img_setting);
+        homeview=findViewById(R.id.home_view);
+        appointview=findViewById(R.id.home_appoitment);
+        settingview=findViewById(R.id.home_setting);
+/*        imageHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
+                imageHome.setImageResource(R.drawable.ic_explore_blue);
+            }
+        });
+        imgAppoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageHome.setImageResource(R.drawable.ic_explore_blue);
+            }
+        });
+        imgsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageHome.setImageResource(R.drawable.ic_explore_blue);
+            }
+        });*/
+
+        lineHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new TimeSlotFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment_timeslot, fragment); // f2_container is your FrameLayout container
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                imageHome.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+
+                homeview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                appointview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+            }
+        });
+        linearAppoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new AppointmentsFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment_timeslot, fragment); // f2_container is your FrameLayout container
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imageHome.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+
+                appointview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                homeview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+
+
+            }
+        });
+        linearSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new SettingFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment_timeslot, fragment); // f2_container is your FrameLayout container
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imageHome.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+
+                settingview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                appointview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                homeview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+
             }
         });
 
-        tvMornTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-        tvMornThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-        tvEvenOne=findViewById(R.id.id_even_one);
-        tvEvenTwo=findViewById(R.id.id_two_one);
-        tvEvenThree=findViewById(R.id.id_three_one);
-        tvEvenOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
 
-        tvEvenTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-        tvEvenThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-        tvAftrOne=findViewById(R.id.id_aftrn_one);
-        tvAftrTwo=findViewById(R.id.id_aftrn_two);
-        tvAftrThree=findViewById(R.id.id_aftrn_three);
-        tvAftrFour=findViewById(R.id.id_aftrn_four);
-        tvAftrFive=findViewById(R.id.id_aftrn_five);
-        tvAftrSix=findViewById(R.id.id_aftrn_six);
-        tvAftrOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-
-        tvAftrTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-        tvAftrThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-        tvAftrFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-
-        tvAftrFive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
-        tvAftrSix.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(TimeSlotActivity.this, ConfirmAppointActivity.class);
-                startActivity(i);
-            }
-        });
     }
 }

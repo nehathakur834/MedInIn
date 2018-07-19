@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -16,13 +14,10 @@ import android.widget.RelativeLayout;
 import com.med.medinin.R;
 import com.med.medinin.fragment.AppointmentsFragment;
 import com.med.medinin.fragment.ClinicListFragment;
-import com.med.medinin.fragment.HomeFragment;
+import com.med.medinin.fragment.MapsFragment;
 import com.med.medinin.fragment.SettingFragment;
-import com.med.medinin.model.ClinicListModel;
 
-import java.util.List;
-
-public class ClinicListActivity extends AppCompatActivity {
+public class MapStartActivity extends AppCompatActivity {
     Fragment fragment;
     private FragmentManager fragmentManager;
     RelativeLayout lineHome,linearAppoint,linearSetting;
@@ -32,13 +27,13 @@ public class ClinicListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cliniclist);
+        setContentView(R.layout.activity_mapstart);
 
         fragmentManager = getSupportFragmentManager();
         if(savedInstanceState==null){
-            fragment = new ClinicListFragment();
+            fragment = new MapsFragment();
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.frame_fragment, fragment).commit();
+            transaction.replace(R.id.frame_fragment_map, fragment).commit();
         }
 
         lineHome=findViewById(R.id.llyt_home);
@@ -72,9 +67,9 @@ public class ClinicListActivity extends AppCompatActivity {
         lineHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragment = new ClinicListFragment();
+                fragment = new MapsFragment();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frame_fragment, fragment); // f2_container is your FrameLayout container
+                transaction.replace(R.id.frame_fragment_map, fragment); // f2_container is your FrameLayout container
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -92,7 +87,7 @@ public class ClinicListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 fragment = new AppointmentsFragment();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frame_fragment, fragment); // f2_container is your FrameLayout container
+                transaction.replace(R.id.frame_fragment_map, fragment); // f2_container is your FrameLayout container
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -112,7 +107,7 @@ public class ClinicListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 fragment = new SettingFragment();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frame_fragment, fragment); // f2_container is your FrameLayout container
+                transaction.replace(R.id.frame_fragment_map, fragment); // f2_container is your FrameLayout container
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);
                 transaction.commit();

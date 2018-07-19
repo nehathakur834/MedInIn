@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.med.medinin.R;
 import com.med.medinin.model.ClinicListModel;
-import com.med.medinin.weather.ForecastAdapter;
+
 
 
 import java.util.List;
