@@ -45,26 +45,26 @@
 
                 <ImageView
                     android:id="@+id/img_loctn"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/ic_loaction"/>
-                <EditText
-                    android:id="@+id/edit_txt"
+
+                <com.reginald.editspinner.EditSpinner
+                    android:id="@+id/edit_spinner"
                     android:layout_width="250dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="30dp"
-                    android:textSize="10sp"
+                    android:layout_height="wrap_content"
+                    app:dropDownDrawable="@drawable/ic_iconarrow"
+                    app:dropDownDrawableSpacing="10dp"
+                    app:dropDownDrawableWidth="25dp"
+                    app:dropDownDrawableHeight="20dp"
+                    android:textSize="@dimen/_6ssp"
                     android:textColor="@color/color_white"
-                    android:backgroundTint="@color/transparent"/>
-
-
-
-
-
-
-
+                    android:backgroundTint="@color/transparent"
+                    android:layout_marginLeft="@dimen/_30ssp"
+                    android:layout_marginRight="@dimen/_5ssp"
+                    />
 
             </RelativeLayout>
 
@@ -166,6 +166,7 @@
                         android:layout_centerInParent="true">
 
                         <com.med.medinin.circularseekbar.CircularSeekBar
+                            android:background="@drawable/et_gradient_circle"
                             android:id="@+id/seekbar"
                             android:layout_width="150dp"
                             android:layout_height="150dp"

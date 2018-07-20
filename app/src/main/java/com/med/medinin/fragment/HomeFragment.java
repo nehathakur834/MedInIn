@@ -18,15 +18,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
@@ -59,6 +63,7 @@ import com.med.medinin.adapter.HomeAdapter;
 import com.med.medinin.model.AppointListModel;
 import com.med.medinin.model.ClinicListModel;
 import com.med.medinin.model.DataModel;
+import com.reginald.editspinner.EditSpinner;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -110,6 +115,11 @@ public class HomeFragment extends Fragment {
     EditText tvAddress;
     ImageView imageView;
     public MainActivity activity;
+    Spinner spin;
+    EditSpinner mEditSpinner;
+    ImageView imgee;
+    String[] bankNames = {"1705,Lake streat,Uk", "1207,Dipord ,US", "1225,Walk Streat,Us", "1225,Walk Streat,Us", "1225,Walk Streat,Us"};
+
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -136,6 +146,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         HomeAdapter clinicListAdapter = new HomeAdapter(getActivity(), dataModelList);
         recyclerView.setAdapter(clinicListAdapter);
+        mEditSpinner = (EditSpinner)view.findViewById(R.id.edit_spinner);
         init();
         imageView = view.findViewById(R.id.img_loctn);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +156,7 @@ public class HomeFragment extends Fragment {
                 startActivity(i);
             }
         });
-        tvAddress = view.findViewById(R.id.edit_txt);
+     /*   tvAddress = view.findViewById(R.id.edit_txt);
 
         tvAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +165,7 @@ public class HomeFragment extends Fragment {
 //                startActivity(i);
 
             }
-        });
+        });*/
         Dexter.withActivity(getActivity())
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {
@@ -197,8 +208,39 @@ public class HomeFragment extends Fragment {
 //                transaction.commit();
             }
         });
+     /*   spin = view.findViewById(R.id.clinic_list);
+        imgee = view.findViewById(R.id.imge);
+        imgee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SppinerView(view);
+            }
+        });*/
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item,
+               bankNames);
+        mEditSpinner.setAdapter(adapter);
         return view;
     }
+/*    public void SppinerView(View view){
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_text, bankNames);
+        dataAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown);
+        spin.setAdapter(dataAdapter);
+        spin.setVisibility(View.VISIBLE);
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position!=0) {
+                   *//* button1.setText(countriesList[position]);*//*
+                    spin.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }*/
     private void updateLocationUI() {
         if (mCurrentLocation != null) {
 
@@ -221,9 +263,9 @@ public class HomeFragment extends Fragment {
             String postalCode = addresses.get(0).getPostalCode();
             String knownName = addresses.get(0).getFeatureName();
 
-            tvAddress.setText(address);
-            tvAddress.setSelection(tvAddress.getText().length());
-            tvAddress.requestFocus();
+            mEditSpinner.setText(address);
+            mEditSpinner.setSelection(mEditSpinner.getText().length());
+            mEditSpinner.requestFocus();
             //Toast.makeText(getActivity(), address+"-"+city,Toast.LENGTH_SHORT).show();
 
           /*  txtLocationResult.setText(
@@ -330,12 +372,12 @@ public class HomeFragment extends Fragment {
     private void lendingTableItemList() {
         if (dataModelList == null) {
             dataModelList = new ArrayList<DataModel>();
-            dataModelList.add(new DataModel(R.drawable.med_stethoscope, "General"));
-            dataModelList.add(new DataModel(R.drawable.med_stethoscope, "Respiratory"));
-            dataModelList.add(new DataModel(R.drawable.med_stethoscope, "Cardiology"));
-            dataModelList.add(new DataModel(R.drawable.med_stethoscope, "General"));
-            dataModelList.add(new DataModel(R.drawable.med_stethoscope, "Respiratory"));
-            dataModelList.add(new DataModel(R.drawable.med_stethoscope, "Cardiology"));
+            dataModelList.add(new DataModel(R.drawable.icon_general, "General"));
+            dataModelList.add(new DataModel(R.drawable.icon_respiratory, "Respiratory"));
+            dataModelList.add(new DataModel(R.drawable.icon_heart, "Cardiology"));
+            dataModelList.add(new DataModel(R.drawable.icon_general, "General"));
+            dataModelList.add(new DataModel(R.drawable.icon_respiratory, "Respiratory"));
+
             }
     }
     @Override

@@ -41,9 +41,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
 
     @Override
     public void onBindViewHolder(HomeAdapter.CustomViewHolder holder, final int position) {
-
-        Glide.with(context)
-                .load(R.drawable.med_stethoscope).into(holder.image);
+       // Glide.with(context).load(dataModelList.get(position)).into(holder.image);
+   /*     Glide.with(context)
+                .load(R.drawable.med_stethoscope)
+                .into(holder.image);*/
+        holder.image.setImageResource(dataModelList.get(position).getImage());
         holder.tv_lendingamount.setText(dataModelList.get(position).getName());
         holder.row_linearlayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +56,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
         });
         if(row_index==position){
             holder.image.setColorFilter(Color.argb(255, 255, 255, 255));
-            holder.row_linearlayout.setBackgroundColor(Color.parseColor("#2cd0f7"));
+            holder.row_linearlayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.et_gradient_blue) );
             holder.tv_lendingamount.setTextColor(Color.parseColor("#ffffff"));
             holder.image.setColorFilter(ContextCompat.getColor(context, R.color.color_white),PorterDuff.Mode.SRC_IN);
         }

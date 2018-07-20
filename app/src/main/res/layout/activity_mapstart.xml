@@ -35,8 +35,8 @@
 
             <ImageView
                 android:id="@+id/img_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_explore_blue" />
@@ -67,8 +67,8 @@
 
             <ImageView
                 android:id="@+id/img_appoint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:layout_centerInParent="true"
                 android:background="@drawable/ic_cal" />
@@ -95,8 +95,8 @@
 
             <ImageView
                 android:id="@+id/img_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_settings" />

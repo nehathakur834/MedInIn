@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@drawable/bg_home">
 
@@ -60,12 +61,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cardiology Clinic"
+                android:text="Cardiology Clinics"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:layout_gravity="center"
-                android:textStyle="bold"
                 android:textColor="@color/color_white"
                 android:gravity="center"/>
 
@@ -80,15 +80,26 @@
                 android:textSize="@dimen/_10ssp"
                 android:textColor="@color/color_white"
                 android:gravity="center"/>
-
-            <LinearLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@drawable/shape"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
-                android:orientation="vertical">
+                android:layout_marginBottom="20dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="10dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                card_view:cardElevation="10dp"
+                card_view:cardPreventCornerOverlap="false"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,21 +122,31 @@
                         android:padding="3dp"
                         android:text="Sort" />
 
-
-                    <ImageView
+                    <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="0.2"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/ic_listicon"/>
+                        android:layout_weight="0.7"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_height="@dimen/_30ssp">
 
-                    <ImageView
-                        android:id="@+id/map_view"
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
-                        android:layout_weight="0.2"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/ic_place"/>
+                        <ImageView
+                            android:id="@+id/list_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/ic_listicon"/>
+
+                        <ImageView
+                            android:layout_toRightOf="@+id/list_view"
+                            android:id="@+id/map_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6ssp"
+                            android:layout_marginLeft="@dimen/_10ssp"
+                            android:background="@drawable/icon_placeloctn"/>
+                    </RelativeLayout>
+
+
 
 
                 </LinearLayout>
@@ -154,7 +175,8 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"/>
                 </RelativeLayout>
-            </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
 

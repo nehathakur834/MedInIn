@@ -28,7 +28,7 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/color_gray"
-                android:background="@drawable/icon_heart"/>
+                android:background="@drawable/ic_heart"/>
 
         </LinearLayout>
 
@@ -50,8 +50,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="kjhkjhkjnjk"
-                android:textColor="@color/color_grayone"
-                />
+                android:textSize="@dimen/_8ssp"
+                android:textColor="@color/color_grayone" />
             <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:textSize="@dimen/_8ssp"
                 android:textColor="@color/color_gray"
                 android:text="1 mile"/>
 

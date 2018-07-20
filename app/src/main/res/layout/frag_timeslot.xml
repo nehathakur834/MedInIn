@@ -105,6 +105,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="right"
                     android:padding="3dp"
+                    android:textStyle="bold"
                     android:gravity="center"
                     android:textSize="12sp"
                     android:text="Today Apr 19th" />
@@ -130,8 +131,8 @@
                     android:layout_margin="10dp">
 
                     <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="15dp"
+                        android:layout_width="25dp"
+                        android:layout_height="12dp"
                         android:layout_gravity="center"
                         android:background="@drawable/icon_morning"/>
 

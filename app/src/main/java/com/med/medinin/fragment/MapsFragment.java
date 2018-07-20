@@ -231,7 +231,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                     .position(new LatLng(location.getLatitude(), location.getLongitude()))
                     .title("You are here")
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_marker));
-
+            Marker marker= mMap.addMarker(mark);
 /*
             Marker marker= mMap.addMarker(mark);
             Projection projection = mMap.getProjection();
