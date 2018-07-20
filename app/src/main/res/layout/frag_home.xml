@@ -165,7 +165,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
 
-                        <com.med.medinin.circularseekbar.CircularSeekBar
+                        <com.akaita.android.circularseekbar.CircularSeekBar
                             android:background="@drawable/et_gradient_circle"
                             android:id="@+id/seekbar"
                             android:layout_width="150dp"
