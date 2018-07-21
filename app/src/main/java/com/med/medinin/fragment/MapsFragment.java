@@ -232,6 +232,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                     .title("You are here")
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_marker));
             Marker marker= mMap.addMarker(mark);
+           // mMap.setMyLocationEnabled(false);
 /*
             Marker marker= mMap.addMarker(mark);
             Projection projection = mMap.getProjection();
@@ -242,6 +243,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
             mMap.animateCamera(CameraUpdateFactory.newLatLng(targetPosition), 1000, null);*/
 
             // Setting a custom info window adapter for the google map
+
             mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
                 // Use default InfoWindow frame
@@ -282,6 +284,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
             });
 
             marker.showInfoWindow();
+
 
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             //mMap.animateCamera(CameraUpdateFactory.zoomTo(15));

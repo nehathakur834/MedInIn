@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent">
+    android:background="#eeeeee">
 
 
     <LinearLayout
@@ -49,13 +49,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="HC Total Clinic"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2112,Diposrd Walk,US"
-                    android:layout_marginBottom="5dp"
+                    android:text="2112,Despardd Street,Montreal,QB"
+                    android:layout_marginBottom="10dp"
                     android:textSize="11sp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,7 +74,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(99)" />
+                        android:text="(8)"
+                        android:textSize="10sp"/>
 
 
                 </LinearLayout>
@@ -110,16 +111,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Services"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">

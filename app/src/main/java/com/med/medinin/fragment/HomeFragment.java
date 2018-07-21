@@ -3,6 +3,7 @@ package com.med.medinin.fragment;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Address;
@@ -115,6 +116,7 @@ public class HomeFragment extends Fragment {
     EditText tvAddress;
     ImageView imageView;
     public MainActivity activity;
+    Context context;
     Spinner spin;
     EditSpinner mEditSpinner;
     ImageView imgee;
@@ -138,7 +140,7 @@ public class HomeFragment extends Fragment {
 //            final FragmentTransaction transaction = fragmentManager.beginTransaction();
 //            transaction.replace(R.id.frame_frag, fragment).commit();
 //        }
-
+        context=getActivity();
         lendingTableItemList();
         recyclerView = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -247,7 +249,7 @@ public class HomeFragment extends Fragment {
             Geocoder geocoder = null;
             List<Address> addresses = null;
 
-            geocoder = new Geocoder(activity, Locale.getDefault());
+            geocoder = new Geocoder(context, Locale.getDefault());
 
 
             try {
@@ -380,10 +382,10 @@ public class HomeFragment extends Fragment {
 
             }
     }
-    @Override
+   /* @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = (MainActivity) activity;
-    }
+    }*/
 
 }

@@ -40,6 +40,7 @@
     <color name="color_gray">#899bab</color>
     <color name="color_grayone">#FFCDCDCE</color>
     <color name="color_graym">#FFD5D8DA</color>
+    <color name="greydialog">#eeeeee</color>
     <color name="color_lightGray">#f8f8f8</color>
     <color name="color_btn">#8e63e6</color>
     <color name="grayIconTint">#727272</color>
@@ -48,6 +49,7 @@
     <color name="gcolor">#eeeff3</color>
     <color name="blue_appcolor">#f2fdff</color>
     <color name="darkblue_color">#f2fdff</color>
+    <color name="shadow_color">#FFD5D8DA</color>
 
     <color name="gradientPeriodicClouds_c1">#ffffff</color>
     <color name="gradientPeriodicClouds_c2">#ffffff</color>

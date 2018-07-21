@@ -19,7 +19,7 @@
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="@color/gcolor"
@@ -29,17 +29,18 @@
         <RelativeLayout
             android:id="@+id/llyt_home"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/img_home"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/ic_explore_blue" />
 
 
@@ -53,23 +54,24 @@
         </RelativeLayout>
 
    <View
-       android:layout_width="1.5dp"
-       android:layout_height="30dp"
+       android:layout_width="1dp"
+       android:layout_height="25dp"
        android:layout_gravity="center"
-       android:background="@color/color_gray"/>
+       android:background="@color/color_grayone"/>
 
         <RelativeLayout
             android:id="@+id/llyt_appointment"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/img_appoint"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center"
                 android:layout_centerInParent="true"
                 android:background="@drawable/ic_cal" />
@@ -82,22 +84,23 @@
         </RelativeLayout>
 
         <View
-            android:layout_width="1.5dp"
-            android:layout_height="30dp"
+            android:layout_width="1dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
-            android:background="@color/color_gray"/>
+            android:background="@color/color_grayone"/>
         <RelativeLayout
             android:id="@+id/llyt_setting"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/img_setting"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_settings" />

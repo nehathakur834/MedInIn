@@ -4,7 +4,7 @@
     android:shape="oval"
     android:thicknessRatio="1.9"
     android:useLevel="false" >
-    <solid android:color="#665168dd" />
+    <solid android:color="#1AFFFFFF" />
 
 
     </shape>
