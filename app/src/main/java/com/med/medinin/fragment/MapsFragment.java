@@ -149,7 +149,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        this.mMap.setMyLocationEnabled(true);
+        this.mMap.setMyLocationEnabled(false);
         this.mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
@@ -233,14 +233,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_marker));
             Marker marker= mMap.addMarker(mark);
            // mMap.setMyLocationEnabled(false);
-/*
-            Marker marker= mMap.addMarker(mark);
-            Projection projection = mMap.getProjection();
-            LatLng markerPosition = marker.getPosition();
-            Point markerPoint = projection.toScreenLocation(markerPosition);
-            Point targetPoint = new Point(markerPoint.x, markerPoint.y - view.getHeight() / 2);
-            LatLng targetPosition = projection.fromScreenLocation(targetPoint);
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(targetPosition), 1000, null);*/
+
+          //  Marker marker= mMap.addMarker(mark);
+//            Projection projection = mMap.getProjection();
+//            LatLng markerPosition = marker.getPosition();
+//            final Point markerPoint = projection.toScreenLocation(markerPosition);
+//            Point targetPoint = new Point(markerPoint.x, markerPoint.y);
+//            LatLng targetPosition = projection.fromScreenLocation(targetPoint);
+//            mMap.animateCamera(CameraUpdateFactory.newLatLng(targetPosition), 1000, null);//*/
 
             // Setting a custom info window adapter for the google map
 
@@ -261,7 +261,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
                     // Getting the position from the marker
                     LatLng latLng = marker.getPosition();
-
+                  //  marker.setInfoWindowAnchor(markerPoint.x,markerPoint.y);
                     // Getting reference to the TextView to set latitude
                    // TextView txt_head = (TextView) v.findViewById(R.id.txt_head);
 

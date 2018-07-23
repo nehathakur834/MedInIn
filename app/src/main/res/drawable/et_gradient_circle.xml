@@ -4,10 +4,10 @@
         <shape android:shape="oval" >
             <gradient
                 android:angle="0"
-                android:centerColor="#2bd1f8"
+                android:centerColor="#439ce7"
                 android:centerX="28%"
                 android:endColor="#a854d4"
-                android:startColor="#439ce7"
+                android:startColor="#2bd1f8"
                 android:type="linear" />
             <corners android:radius="16dp"/>
         </shape>

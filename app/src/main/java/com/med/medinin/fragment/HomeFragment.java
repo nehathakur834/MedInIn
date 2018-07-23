@@ -140,7 +140,7 @@ public class HomeFragment extends Fragment {
 //            final FragmentTransaction transaction = fragmentManager.beginTransaction();
 //            transaction.replace(R.id.frame_frag, fragment).commit();
 //        }
-        context=getActivity();
+        context = getActivity();
         lendingTableItemList();
         recyclerView = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -148,7 +148,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         HomeAdapter clinicListAdapter = new HomeAdapter(getActivity(), dataModelList);
         recyclerView.setAdapter(clinicListAdapter);
-        mEditSpinner = (EditSpinner)view.findViewById(R.id.edit_spinner);
+        mEditSpinner = (EditSpinner) view.findViewById(R.id.edit_spinner);
         init();
         imageView = view.findViewById(R.id.img_loctn);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -199,8 +199,8 @@ public class HomeFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             Intent i = new Intent(getActivity(), SearchClinicActivity.class);
-              startActivity(i);
+                Intent i = new Intent(getActivity(), SearchClinicActivity.class);
+                startActivity(i);
 
 //               fragment = new SearchClinicFragment();
 //                final FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -220,20 +220,21 @@ public class HomeFragment extends Fragment {
         });*/
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item,
-               bankNames);
+                bankNames);
         mEditSpinner.setAdapter(adapter);
         return view;
     }
-/*    public void SppinerView(View view){
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_text, bankNames);
-        dataAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown);
-        spin.setAdapter(dataAdapter);
-        spin.setVisibility(View.VISIBLE);
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position!=0) {
-                   *//* button1.setText(countriesList[position]);*//*
+
+    /*    public void SppinerView(View view){
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_text, bankNames);
+            dataAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown);
+            spin.setAdapter(dataAdapter);
+            spin.setVisibility(View.VISIBLE);
+            spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    if(position!=0) {
+                       *//* button1.setText(countriesList[position]);*//*
                     spin.setVisibility(View.GONE);
                 }
             }
@@ -249,25 +250,24 @@ public class HomeFragment extends Fragment {
             Geocoder geocoder = null;
             List<Address> addresses = null;
 
-            geocoder = new Geocoder(context, Locale.getDefault());
-
-
             try {
+                geocoder = new Geocoder(context, Locale.getDefault());
                 addresses = geocoder.getFromLocation(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+            if(addresses!=null) {
+                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                String city = addresses.get(0).getLocality();
+                String state = addresses.get(0).getAdminArea();
+                String country = addresses.get(0).getCountryName();
+                String postalCode = addresses.get(0).getPostalCode();
+                String knownName = addresses.get(0).getFeatureName();
 
-            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            String city = addresses.get(0).getLocality();
-            String state = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
-            String postalCode = addresses.get(0).getPostalCode();
-            String knownName = addresses.get(0).getFeatureName();
-
-            mEditSpinner.setText(address);
-            mEditSpinner.setSelection(mEditSpinner.getText().length());
-            mEditSpinner.requestFocus();
+                mEditSpinner.setText(address);
+                mEditSpinner.setSelection(mEditSpinner.getText().length());
+                mEditSpinner.requestFocus();
+            }
             //Toast.makeText(getActivity(), address+"-"+city,Toast.LENGTH_SHORT).show();
 
           /*  txtLocationResult.setText(
@@ -285,6 +285,7 @@ public class HomeFragment extends Fragment {
 
 
     }
+
     private void init() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         mSettingsClient = LocationServices.getSettingsClient(getActivity());
@@ -312,6 +313,7 @@ public class HomeFragment extends Fragment {
         builder.addLocationRequest(mLocationRequest);
         mLocationSettingsRequest = builder.build();
     }
+
     private void startLocationUpdates() {
         mSettingsClient
                 .checkLocationSettings(mLocationSettingsRequest)
@@ -359,6 +361,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
     }
+
     private void openSettings() {
         Intent intent = new Intent();
         intent.setAction(
@@ -380,7 +383,7 @@ public class HomeFragment extends Fragment {
             dataModelList.add(new DataModel(R.drawable.icon_general, "General"));
             dataModelList.add(new DataModel(R.drawable.icon_respiratory, "Respiratory"));
 
-            }
+        }
     }
    /* @Override
     public void onAttach(Activity activity) {

@@ -131,7 +131,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        this.mMap.setMyLocationEnabled(true);
+        this.mMap.setMyLocationEnabled(false);
         this.mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {

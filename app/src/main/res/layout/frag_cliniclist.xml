@@ -39,8 +39,8 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@drawable/circle"
             android:gravity="center"
@@ -55,7 +55,7 @@
                 android:text="9"
                 android:textAlignment="center"
                 android:textColor="@color/color_white"
-                android:textSize="25sp" />
+                android:textSize="28sp" />
 
         </LinearLayout>
 
@@ -67,6 +67,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
+            android:textSize="20sp"
             android:text="Cardiology Clinics"
             android:textColor="@color/color_white" />
 
@@ -74,13 +75,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/_5ssp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:gravity="center"
             android:text="2731, Despord Street,QA"
             android:textColor="@color/color_white"
-            android:textSize="@dimen/_10ssp" />
+            android:textSize="10sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
