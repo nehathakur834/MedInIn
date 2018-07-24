@@ -42,10 +42,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
     @Override
     public void onBindViewHolder(HomeAdapter.CustomViewHolder holder, final int position) {
        // Glide.with(context).load(dataModelList.get(position)).into(holder.image);
-   /*     Glide.with(context)
-                .load(R.drawable.med_stethoscope)
-                .into(holder.image);*/
-        holder.image.setImageResource(dataModelList.get(position).getImage());
+        Glide.with(context)
+                .load(R.drawable.icon_respiratory)
+                .into(holder.image);
+        //holder.image.setImageResource(dataModelList.get(position).getImage());
         holder.tv_lendingamount.setText(dataModelList.get(position).getName());
         holder.row_linearlayout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -46,16 +46,18 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/dlg_hosp_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="HC Total Clinic"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/dlg_hosp_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2112,Despardd Street,Montreal,QB"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="5dp"
                     android:textSize="11sp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -63,6 +65,7 @@
                     android:orientation="horizontal">
 
                     <RatingBar
+                        android:id="@+id/rate"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,8 +77,31 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(8)"
+                        android:text="("
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:textSize="10sp"/>
+                    <TextView
+                        android:id="@+id/dlg_hosp_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="10sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=")"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="10sp"/>
+
+
+
 
 
                 </LinearLayout>

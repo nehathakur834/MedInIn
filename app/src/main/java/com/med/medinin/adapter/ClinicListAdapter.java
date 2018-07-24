@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -47,15 +48,19 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
     }
 
     @Override
-    public void onBindViewHolder(ClinicListAdapter.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(ClinicListAdapter.CustomViewHolder holder, final int position) {
 
 
         Glide.with(holder.image.getContext())
                 .load(R.drawable.icon_heart);
 
 
-        holder.tv_lendingamount.setText(tradeHistoryModelList.get(position).getName());
+        holder.tv_lendingamount.setText(tradeHistoryModelList.get(position).getHospital_name());
         holder.tv_lendingbonus.setText(tradeHistoryModelList.get(position).getAddress());
+        holder.tv_distance.setText(tradeHistoryModelList.get(position).getDistance_from());
+        holder.tv_review.setText(tradeHistoryModelList.get(position).getTotal_reviews());
+        holder.ratingbar.setRating(Float.parseFloat(tradeHistoryModelList.get(position).getRating()));
+
         holder.listarrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +72,14 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
                 dialog.setCanceledOnTouchOutside(false);
                 btnAppointment = dialog.findViewById(R.id.btn_bookappointment);
                 iv_close1 = dialog.findViewById(R.id.icon_close1);
+                RatingBar rate=(RatingBar)dialog.findViewById(R.id.rate);
+                TextView hospName=dialog.findViewById(R.id.dlg_hosp_name);
+                TextView hospAddress=dialog.findViewById(R.id.dlg_hosp_address);
+                TextView hospReview=dialog.findViewById(R.id.dlg_hosp_review);
+                hospName.setText(tradeHistoryModelList.get(position).getHospital_name());
+                hospAddress.setText(tradeHistoryModelList.get(position).getAddress());
+                hospReview.setText(tradeHistoryModelList.get(position).getTotal_reviews());
+                rate.setRating(Float.parseFloat(tradeHistoryModelList.get(position).getRating()));
                 iv_close1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -94,13 +107,17 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView tv_lendingid, tv_lendingamount, tv_lendingbonus ;
+        TextView tv_distance, tv_lendingamount, tv_lendingbonus,tv_review ;
         LinearLayout listarrow;
+        RatingBar ratingbar;
         public CustomViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.iv_image);
             tv_lendingamount = itemView.findViewById(R.id.tv_clinicname);
             tv_lendingbonus = itemView.findViewById(R.id.tv_address);
+            tv_distance = itemView.findViewById(R.id.distance_from);
+            tv_review = itemView.findViewById(R.id.tv_review);
+            ratingbar = itemView.findViewById(R.id.rating);
             listarrow = itemView.findViewById(R.id.arrow);
         }
 

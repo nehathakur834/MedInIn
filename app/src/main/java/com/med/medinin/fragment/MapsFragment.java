@@ -205,12 +205,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 marker.remove();
             }
 
-
-
-
-
-
-
             //Place current location marker
 
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());

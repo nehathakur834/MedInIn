@@ -3,6 +3,7 @@ package com.med.medinin.fragment;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -40,6 +41,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -72,12 +80,20 @@ import com.med.medinin.model.ClinicListModel;
 import com.med.medinin.model.DataModel;
 import com.reginald.editspinner.EditSpinner;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
+import static com.med.medinin.utils.Apis.DEPARTMENTS_URL;
 
 /**
  * Created by NEHA on 1/10/2018.
@@ -87,7 +103,7 @@ public class HomeFragment extends Fragment {
     private View view;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    private List<DataModel> dataModelList = null;
+    private List<DataModel> dataModelList = new ArrayList<>();
     private LocationManager locationManager;
     private String provider;
     Fragment fragment;
@@ -127,19 +143,14 @@ public class HomeFragment extends Fragment {
     EditSpinner mEditSpinner;
     ImageView imgee;
     String[] bankNames = {"1705,Lake streat,Uk", "1207,Dipord ,US", "1225,Walk Streat,Us", "1225,Walk Streat,Us", "1225,Walk Streat,Us"};
-
     private static Bitmap imageOriginal, imageScaled;
     private static Matrix matrix;
-
     private ImageView dialer;
     private int dialerHeight, dialerWidth;
     private GestureDetector detector;
-
-    // needed for detecting the inversed rotations
     private boolean[] quadrantTouched;
-
-
     private boolean allowRotating;
+    ProgressDialog dialog;
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -152,20 +163,13 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_home, container, false);
-        //fragmentManager = getFragmentManager();
-//        if(savedInstanceState==null){
-//            fragment = new SearchClinicFragment();
-//            final FragmentTransaction transaction = fragmentManager.beginTransaction();
-//            transaction.replace(R.id.frame_frag, fragment).commit();
-//        }
         context = getActivity();
-        lendingTableItemList();
+        //lendingTableItemList();
         recyclerView = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setHasFixedSize(true);
-        HomeAdapter clinicListAdapter = new HomeAdapter(getActivity(), dataModelList);
-        recyclerView.setAdapter(clinicListAdapter);
+        departmentMethod();
         mEditSpinner = (EditSpinner) view.findViewById(R.id.edit_spinner);
         init();
         imageView = view.findViewById(R.id.img_loctn);
@@ -176,16 +180,7 @@ public class HomeFragment extends Fragment {
                 startActivity(i);
             }
         });
-     /*   tvAddress = view.findViewById(R.id.edit_txt);
 
-        tvAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent i = new Intent(getActivity(), MapsFragment.class);
-//                startActivity(i);
-
-            }
-        });*/
         Dexter.withActivity(getActivity())
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {
@@ -220,22 +215,9 @@ public class HomeFragment extends Fragment {
                 Intent i = new Intent(getActivity(), SearchClinicActivity.class);
                 startActivity(i);
 
-//               fragment = new SearchClinicFragment();
-//                final FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                transaction.replace(R.id.frame_frag, fragment); // f2_container is your FrameLayout container
-//                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
             }
         });
-     /*   spin = view.findViewById(R.id.clinic_list);
-        imgee = view.findViewById(R.id.imge);
-        imgee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SppinerView(view);
-            }
-        });*/
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item,
                 bankNames);
@@ -578,8 +560,8 @@ public class HomeFragment extends Fragment {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-
-    /* Initialise car items in list. */
+/*
+    *//* Initialise car items in list. *//*
     private void lendingTableItemList() {
         if (dataModelList == null) {
             dataModelList = new ArrayList<DataModel>();
@@ -590,11 +572,69 @@ public class HomeFragment extends Fragment {
             dataModelList.add(new DataModel(R.drawable.icon_respiratory, "Respiratory"));
 
         }
-    }
-   /* @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = (MainActivity) activity;
     }*/
+    private void departmentMethod() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, DEPARTMENTS_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject rs = null;
+                try {
+                    if (dialog != null) {
+                        dialog.dismiss();
+                        dialog = null;
+                    }
+                    rs = new JSONObject(response);
+                    String status = rs.optString("msg");
+                    String error = rs.optString("err");
+                    if (status.equals("success")) {
+                        JSONArray result = rs.getJSONArray("data");
+                        for (int i = 0; i < result.length(); i++) {
+                            JSONObject result1 = result.getJSONObject(i);
+                            DataModel f = new DataModel();
+                            f.setName(result1.getString("Name"));
+                            dataModelList.add(f);
+                            }
+                            deptData();
+
+                    } else if (status.equals("false")) {
+                        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (dialog != null) {
+                    dialog.dismiss();
+                    dialog = null;
+                }
+                Toast.makeText(getActivity(), "Some error occurred, please try again", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new
+                DefaultRetryPolicy(60000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(stringRequest);
+        dialog = new ProgressDialog(getActivity());
+        dialog.setMessage("Please wait....");
+        dialog.setTitle("");
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+    }
+    private void deptData() {
+        HomeAdapter clinicListAdapter = new HomeAdapter(getActivity(), dataModelList);
+        recyclerView.setAdapter(clinicListAdapter);
+    }
 
 }

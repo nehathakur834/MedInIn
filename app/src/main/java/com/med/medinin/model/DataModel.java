@@ -1,7 +1,7 @@
 package com.med.medinin.model;
 
 public class DataModel {
-    private int image;
+/*    private int image;
     private String clinicname;
 
 
@@ -28,5 +28,35 @@ public class DataModel {
 
     public void setName(String clinicname) {
         this.clinicname = clinicname;
+    }*/
+
+    private String Name;
+
+    private String ID;
+
+    public String getName ()
+    {
+        return Name;
+    }
+
+    public void setName (String Name)
+    {
+        this.Name = Name;
+    }
+
+    public String getID ()
+    {
+        return ID;
+    }
+
+    public void setID (String ID)
+    {
+        this.ID = ID;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ClassPojo [Name = "+Name+", ID = "+ID+"]";
     }
 }
