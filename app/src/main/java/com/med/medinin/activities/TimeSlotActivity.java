@@ -1,5 +1,7 @@
 package com.med.medinin.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -17,6 +19,10 @@ import com.med.medinin.fragment.ClinicListFragment;
 import com.med.medinin.fragment.SettingFragment;
 import com.med.medinin.fragment.TimeSlotFragment;
 
+import static com.med.medinin.utils.CommonMethods.editor;
+import static com.med.medinin.utils.CommonMethods.myPref;
+import static com.med.medinin.utils.CommonMethods.sharedPreferences;
+
 public class TimeSlotActivity extends AppCompatActivity {
 
     Fragment fragment;
@@ -24,7 +30,7 @@ public class TimeSlotActivity extends AppCompatActivity {
     RelativeLayout lineHome,linearAppoint,linearSetting;
     ImageView imageHome,imgAppoint,imgsetting;
     View homeview,appointview,settingview;
-
+    String hospitalId;
     @Override
     public void onBackPressed() {
         finish();
@@ -35,7 +41,6 @@ public class TimeSlotActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeslot);
-
         fragmentManager = getSupportFragmentManager();
         if(savedInstanceState==null){
             fragment = new TimeSlotFragment();

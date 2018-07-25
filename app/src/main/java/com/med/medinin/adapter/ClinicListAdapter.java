@@ -22,8 +22,13 @@ import com.med.medinin.activities.TimeSlotActivity;
 import com.med.medinin.model.ClinicListModel;
 
 
-
+import java.math.BigDecimal;
 import java.util.List;
+
+import static com.med.medinin.utils.CommonMethods.HOSPITAL_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.editor;
+import static com.med.medinin.utils.CommonMethods.myPref;
+import static com.med.medinin.utils.CommonMethods.sharedPreferences;
 
 /**
  * Created by NEHA on 5/3/2018.
@@ -89,8 +94,15 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
                 btnAppointment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i = new Intent(context, TimeSlotActivity.class);
-                        context.startActivity(i);
+                        sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
+                        editor = sharedPreferences.edit();
+                        String hospital_id = tradeHistoryModelList.get(position).getID();
+                        editor.putString(HOSPITAL_ID_FIELD, hospital_id);
+                        editor.apply();
+                        Intent intent = new Intent(context, TimeSlotActivity.class);
+                       // intent.putExtra("hospt_id",hospital_id);
+                        context.startActivity(intent);
+
                     }
                 });
 

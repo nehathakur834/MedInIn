@@ -477,7 +477,6 @@ public class HomeFragment extends Fragment {
     private void init() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         mSettingsClient = LocationServices.getSettingsClient(getActivity());
-
         mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -485,18 +484,15 @@ public class HomeFragment extends Fragment {
                 // location is received
                 mCurrentLocation = locationResult.getLastLocation();
                 mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
-
                 updateLocationUI();
             }
         };
 
         mRequestingLocationUpdates = false;
-
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
         mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
         builder.addLocationRequest(mLocationRequest);
         mLocationSettingsRequest = builder.build();

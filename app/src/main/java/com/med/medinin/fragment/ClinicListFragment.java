@@ -124,6 +124,7 @@ public class ClinicListFragment extends Fragment {
                         for (int i = 0; i < result.length(); i++) {
                             JSONObject result1 = result.getJSONObject(i);
                             ClinicListModel f = new ClinicListModel();
+                            f.setID(result1.getString("ID"));
                             f.setHospital_name(result1.getString("hospital_name"));
                             f.setAddress(result1.getString("address"));
                             f.setRating(result1.getString("rating"));

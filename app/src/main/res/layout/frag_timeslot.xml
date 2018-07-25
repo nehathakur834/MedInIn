@@ -158,7 +158,7 @@
                     android:orientation="horizontal"
                     android:layout_weight="3">
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/id_morn_one"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
@@ -188,7 +188,13 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:background="@drawable/et_purpleshape"
-                        android:gravity="center"/>
+                        android:gravity="center"/>-->
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rView_morning"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="vertical" />
 
                 </LinearLayout>
 
@@ -232,84 +238,14 @@
                     android:orientation="horizontal"
                     android:layout_weight="3">
 
-                    <TextView
-                        android:id="@+id/id_aftrn_one"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="12:00"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center"
-                        android:background="@drawable/et_purpleshape"/>
-
-                    <TextView
-                        android:id="@+id/id_aftrn_two"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="12:30"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/et_purpleshape"
-                        android:gravity="center"/>
-                    <TextView
-                        android:id="@+id/id_aftrn_three"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="13:00"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/et_purpleshape"
-                        android:gravity="center"/>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rView_aftrnoon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="vertical" />
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="3">
 
-                    <TextView
-                        android:id="@+id/id_aftrn_four"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="14:30"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center"
-                        android:background="@drawable/et_purpleshape"/>
-
-                    <TextView
-                        android:id="@+id/id_aftrn_five"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="15:00"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@drawable/et_purpleshape"
-                        android:gravity="center"/>
-                    <TextView
-                        android:id="@+id/id_aftrn_six"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="16:30"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@drawable/et_purpleshape"
-                        android:gravity="center"/>
-
-                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -350,33 +286,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_weight="3">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rView_evening"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="vertical" />
 
-                    <TextView
-                        android:id="@+id/id_even_one"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="17:30"
-                        android:gravity="center"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/et_purpleshape"/>
-
-                    <TextView
-                        android:id="@+id/id_two_one"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="19:00"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/et_purpleshape"
-                        android:gravity="center"/>
-                    <TextView
-                        android:id="@+id/id_three_one"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp"
-                        android:gravity="center"/>
 
                 </LinearLayout>
 
