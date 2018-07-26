@@ -25,26 +25,17 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="1">
+            android:layout_weight="0.8">
 
             <TextView
+                android:id="@+id/aptmnt_bookingdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:backgroundTint="@color/color_gray"
-               android:text="20"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="20sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/color_gray"
-                android:text="April"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="11sp"/>
+               android:textSize="8sp"/>
+
 
         </LinearLayout>
 
@@ -59,7 +50,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_weight="2"
+            android:layout_weight="2.4"
             android:gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
@@ -75,17 +66,19 @@
                 android:layout_marginBottom="20dp" />
 
             <TextView
-                android:id="@+id/clinicname"
+                android:id="@+id/aptmnt_clinicname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hc Total Clinic"
+                android:textSize="12sp"
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/address"
+                android:id="@+id/aptmt_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2112,Diposrd Walk,US"
+                android:textSize="8sp"
                 android:textColor="@color/color_grayone" />
 
             <TextView
@@ -100,7 +93,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             android:layout_gravity="center">
 
 

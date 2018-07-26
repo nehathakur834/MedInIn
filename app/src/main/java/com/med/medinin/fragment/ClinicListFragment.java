@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -23,12 +22,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.med.medinin.MainActivity;
 import com.med.medinin.R;
 import com.med.medinin.activities.MapStartActivity;
 import com.med.medinin.adapter.ClinicListAdapter;
-import com.med.medinin.adapter.HomeAdapter;
 import com.med.medinin.model.ClinicListModel;
-import com.med.medinin.model.DataModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +37,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.med.medinin.utils.Apis.DEPARTMENTS_URL;
 import static com.med.medinin.utils.Apis.HOSPITALS_URL;
 
 /**
@@ -53,6 +50,7 @@ public class ClinicListFragment extends Fragment {
     private List<ClinicListModel> clinicListModelList = new ArrayList<>();
     ImageView mapView;
     ProgressDialog dialog;
+    LinearLayout linear_circle;
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,8 +64,14 @@ public class ClinicListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_cliniclist, container, false);
-
-        //lendingTableItemList();
+        linear_circle =view.findViewById(R.id.linear_circle);
+        linear_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         mapView=view.findViewById(R.id.map_view);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_clinic);
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -86,25 +90,6 @@ public class ClinicListFragment extends Fragment {
         return view;
     }
 
-   /* *//* Initialise car items in list. *//*
-    private void lendingTableItemList() {
-        if (clinicListModelList == null) {
-            clinicListModelList = new ArrayList<ClinicListModel>();
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-            clinicListModelList.add(new ClinicListModel(R.drawable.icon_heart, "Hc Total Clinic","2112,Diposrd Walk,US"));
-
-
-        }*/
 
     private void hospitalMethod() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, HOSPITALS_URL, new Response.Listener<String>() {

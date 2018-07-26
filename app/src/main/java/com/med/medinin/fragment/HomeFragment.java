@@ -2,7 +2,6 @@ package com.med.medinin.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -22,8 +21,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,7 +30,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,10 +69,7 @@ import com.med.medinin.R;
 import com.med.medinin.activities.MapsActivity2;
 
 import com.med.medinin.activities.SearchClinicActivity;
-import com.med.medinin.adapter.ClinicListAdapter;
 import com.med.medinin.adapter.HomeAdapter;
-import com.med.medinin.model.AppointListModel;
-import com.med.medinin.model.ClinicListModel;
 import com.med.medinin.model.DataModel;
 import com.reginald.editspinner.EditSpinner;
 
@@ -84,7 +77,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -151,6 +143,8 @@ public class HomeFragment extends Fragment {
     private boolean[] quadrantTouched;
     private boolean allowRotating;
     ProgressDialog dialog;
+
+
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {

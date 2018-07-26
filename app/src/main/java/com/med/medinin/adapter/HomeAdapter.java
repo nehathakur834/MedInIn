@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.med.medinin.R;
-import com.med.medinin.model.ClinicListModel;
 import com.med.medinin.model.DataModel;
 
 import java.util.List;

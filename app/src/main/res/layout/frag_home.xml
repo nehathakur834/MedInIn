@@ -49,7 +49,7 @@
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/ic_loaction"/>
+                    android:background="@drawable/location_icon"/>
 
                 <com.reginald.editspinner.EditSpinner
                     android:id="@+id/edit_spinner"
@@ -155,6 +155,7 @@
                         android:layout_height="wrap_content"
                         android:text="20mi"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:layout_above="@+id/btn_search"
                         android:layout_below="@+id/linear_circle"
                         android:textSize="12sp" />
@@ -205,6 +206,7 @@
                         android:layout_height="@dimen/_45ssp"
                         android:layout_marginRight="80dp"
                         android:layout_marginLeft="80dp"
+                        android:layout_marginTop="10dp"
                         android:layout_alignParentBottom="true"
                         android:text="SEARCH"
                         android:textColor="@color/color_white"

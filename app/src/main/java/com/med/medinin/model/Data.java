@@ -1,7 +1,8 @@
 package com.med.medinin.model;
 
-public class Data {
+import java.util.List;
 
+public class Data {
     private String status;
 
     private String booking_date;

@@ -2,6 +2,7 @@ package com.med.medinin.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,13 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.med.medinin.MainActivity;
 import com.med.medinin.R;
+import com.med.medinin.activities.MapsActivity2;
 import com.med.medinin.adapter.MorningAdapter;
 import com.med.medinin.model.MorningTimeModel;
 
@@ -56,7 +60,7 @@ public class TimeSlotFragment extends Fragment {
     GridLayoutManager gridLayoutManager2;
     private List<MorningTimeModel> eveningTimeModelList = null;
     private static final int NUMBER_COLUMNS_EVENG= 3;
-
+    ImageView search_icon;
     ProgressDialog dialog;
 
     @Nullable
@@ -70,6 +74,14 @@ public class TimeSlotFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_timeslot, container, false);
+        search_icon=view.findViewById(R.id.img_search_icon);
+        search_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         lendingTableItemList();
         recyclerView = (RecyclerView)view.findViewById(R.id.rView_morning);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), NUMBER_COLUMNS));

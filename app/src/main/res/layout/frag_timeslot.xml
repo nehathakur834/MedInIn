@@ -28,6 +28,7 @@
                 android:layout_marginTop="5dp"/>
 
             <ImageView
+                android:id="@+id/img_search_icon"
                 android:layout_width="16dp"
                 android:layout_height="15dp"
                 android:layout_alignParentRight="true"

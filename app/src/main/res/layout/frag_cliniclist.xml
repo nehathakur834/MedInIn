@@ -107,26 +107,39 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30ssp"
+                        android:gravity="center"
+                        android:layout_gravity="center">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
+                        android:id="@+id/dwn_arrw"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_gravity="center"
-                        android:layout_weight="0.2"
-                        android:background="@drawable/ic_arrow_down" />
+                        android:background="@drawable/arrow_down" />
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
+                        android:id="@+id/sort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:layout_weight="1.5"
+                        android:padding="3dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dwn_arrw"
                         android:text="Sort" />
 
                     <RelativeLayout
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/_30ssp"
                         android:layout_gravity="center"
-                        android:layout_weight="0.7"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
                         android:gravity="center">
 
                         <ImageView
@@ -140,13 +153,13 @@
                             android:id="@+id/map_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_10ssp"
-                            android:layout_marginTop="@dimen/_6ssp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="6dp"
                             android:layout_toRightOf="@+id/list_view"
                             android:background="@drawable/icon_placeloctn" />
                     </RelativeLayout>
 
-
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <RelativeLayout
@@ -166,6 +179,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/linear_circle"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_alignParentBottom="true"
@@ -182,6 +196,7 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             />
+
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>

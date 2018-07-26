@@ -1,6 +1,7 @@
 package com.med.medinin;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout lineHome,linearAppoint,linearSetting;
     ImageView imageHome,imgAppoint,imgsetting;
     View homeview,appointview,settingview;
+    String confirm,con="confm";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +47,8 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
         fragmentManager = getSupportFragmentManager();
-        if(savedInstanceState==null){
-            fragment = new HomeFragment();
-            final FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.frame_fragment_containers, fragment).commit();
-        }
+        Intent intent = getIntent();
+        confirm = intent.getStringExtra("confm");
 
         lineHome=findViewById(R.id.llyt_home);
         linearAppoint=findViewById(R.id.llyt_appointment);
@@ -59,24 +59,27 @@ public class MainActivity extends AppCompatActivity {
         homeview=findViewById(R.id.home_view);
         appointview=findViewById(R.id.home_appoitment);
         settingview=findViewById(R.id.home_setting);
-/*        imageHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageHome.setImageResource(R.drawable.ic_explore_blue);
-            }
-        });
-        imgAppoint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageHome.setImageResource(R.drawable.ic_explore_blue);
-            }
-        });
-        imgsetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageHome.setImageResource(R.drawable.ic_explore_blue);
-            }
-        });*/
+
+        if(savedInstanceState==null){
+//            if(con.equals(confirm)) {
+
+//                imageHome.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+//                imgAppoint.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+//                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+//
+//                homeview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+//                appointview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+//                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+           // }else{
+
+                fragment = new HomeFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment_containers, fragment).commit();
+
+
+        }
+
+
 
         lineHome.setOnClickListener(new View.OnClickListener() {
             @Override

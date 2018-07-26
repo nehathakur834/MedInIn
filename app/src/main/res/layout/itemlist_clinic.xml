@@ -43,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="kjhkjhkjnjk"
+                android:textSize="12sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -50,11 +51,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="kjhkjhkjnjk"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="8dp"
                 android:textColor="@color/color_grayone" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
                 <RatingBar
                     android:id="@+id/rating"
@@ -63,6 +65,7 @@
                     android:theme="@style/RatingBar"
                     style="?android:attr/ratingBarStyleSmall"
                     android:numStars="5"
+                    android:layout_gravity="center"
                     android:isIndicator="false"
                     android:stepSize="0.5"/>
 
@@ -71,17 +74,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="("
+                    android:layout_gravity="center"
                     android:textSize="10sp"/>
                 <TextView
                     android:id="@+id/tv_review"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="8"
+                    android:layout_gravity="center"
                     android:textSize="10sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=")"
+                    android:layout_gravity="center"
                     android:textSize="10sp"/>
             </LinearLayout>
 

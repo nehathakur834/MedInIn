@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.med.medinin.R;
-import com.med.medinin.model.AppointListModel;
-import com.med.medinin.model.ClinicListModel;
+import com.med.medinin.model.Data;
 
 import java.util.List;
 
@@ -22,11 +20,11 @@ import java.util.List;
 public class AppointListAdapter extends RecyclerView.Adapter<AppointListAdapter.CustomViewHolder> {
 
     Context context;
-    List<AppointListModel> tradeHistoryModelList;
+    List<Data> data;
 
-    public AppointListAdapter(Context context, List<AppointListModel> tradeHistoryModelList) {
+    public AppointListAdapter(Context context, List<Data> data) {
         this.context = context;
-        this.tradeHistoryModelList = tradeHistoryModelList;
+        this.data = data;
     }
 
     @Override
@@ -39,27 +37,25 @@ public class AppointListAdapter extends RecyclerView.Adapter<AppointListAdapter.
     @Override
     public void onBindViewHolder(AppointListAdapter.CustomViewHolder holder, int position) {
 
-
-
-        holder.tv_lendingamount.setText(tradeHistoryModelList.get(position).getName());
-        holder.tv_lendingbonus.setText(tradeHistoryModelList.get(position).getAddress());
+        holder.txt_bookingdate.setText(data.get(position).getBooking_date());
+        holder.txt_clinicname.setText(data.get(position).getHospital().getHospital_name());
+        holder.txt_aptmt_address.setText(data.get(position).getHospital().getAddress());
 
     }
 
     @Override
     public int getItemCount() {
-        return tradeHistoryModelList.size();
+        return data.size();
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView tv_lendingid, tv_lendingamount, tv_lendingbonus ;
+        TextView txt_clinicname, txt_bookingdate, txt_aptmt_address ;
 
         public CustomViewHolder(View itemView) {
             super(itemView);
-
-            tv_lendingamount = itemView.findViewById(R.id.clinicname);
-            tv_lendingbonus = itemView.findViewById(R.id.address);
+            txt_bookingdate = itemView.findViewById(R.id.aptmnt_bookingdate);
+            txt_clinicname = itemView.findViewById(R.id.aptmnt_clinicname);
+            txt_aptmt_address = itemView.findViewById(R.id.aptmt_address);
 
         }
 

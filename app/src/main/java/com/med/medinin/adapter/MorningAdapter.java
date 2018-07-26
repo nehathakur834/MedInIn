@@ -76,6 +76,7 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
                 hospitalId = sharedPreferences.getString(HOSPITAL_ID_FIELD, null);
                 editor = sharedPreferences.edit();
@@ -84,6 +85,7 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
 
             }
         });
+
 
     }
 
@@ -187,7 +189,6 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
                             String status = response.getString("msg");
                             if (status.equals("success")) {
                                 JSONArray result = response.getJSONArray("data");
-                                Toast.makeText(context, "true", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(context, ConfirmAppointActivity.class);
                                 context.startActivity(i);
 
