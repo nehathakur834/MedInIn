@@ -41,6 +41,7 @@
 
 
         <TextView
+            android:id="@+id/txt_hosp_name"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="HC Total Clinic"
@@ -50,6 +51,7 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/txt_hosp_address"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="2731, Despord Street,QA"
@@ -107,7 +109,17 @@
                     android:textStyle="bold"
                     android:gravity="center"
                     android:textSize="12sp"
-                    android:text="Today Apr 19th" />
+                    android:text="Today" />
+                <TextView
+                    android:id="@+id/timeslot_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:padding="3dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:text="19th" />
 
                 <ImageView
                     android:layout_width="wrap_content"

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout lineHome,linearAppoint,linearSetting;
     ImageView imageHome,imgAppoint,imgsetting;
     View homeview,appointview,settingview;
-    String confirm,con="confm";
+    String confirm,con="confirm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         }
         fragmentManager = getSupportFragmentManager();
         Intent intent = getIntent();
-        confirm = intent.getStringExtra("confm");
+        confirm = intent.getStringExtra("confirm");
 
         lineHome=findViewById(R.id.llyt_home);
         linearAppoint=findViewById(R.id.llyt_appointment);
@@ -60,26 +60,36 @@ public class MainActivity extends AppCompatActivity {
         appointview=findViewById(R.id.home_appoitment);
         settingview=findViewById(R.id.home_setting);
 
-        if(savedInstanceState==null){
-//            if(con.equals(confirm)) {
+        if(savedInstanceState==null) {
+            if (con.equals(confirm)) {
+                fragment = new AppointmentsFragment();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frame_fragment_containers, fragment).commit();
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imageHome.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
 
-//                imageHome.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
-//                imgAppoint.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
-//                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
-//
-//                homeview.setBackgroundColor(getResources().getColor(R.color.color_blue));
-//                appointview.setBackgroundColor(getResources().getColor(R.color.gcolor));
-//                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
-           // }else{
+                appointview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                homeview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+
+
+            } else {
 
                 fragment = new HomeFragment();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.frame_fragment_containers, fragment).commit();
+                imageHome.getBackground().setColorFilter(Color.parseColor("#73f3ff"), PorterDuff.Mode.SRC_ATOP);
+                imgAppoint.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
+                imgsetting.getBackground().setColorFilter(Color.parseColor("#FFD5D8DA"), PorterDuff.Mode.SRC_ATOP);
 
+                homeview.setBackgroundColor(getResources().getColor(R.color.color_blue));
+                appointview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+                settingview.setBackgroundColor(getResources().getColor(R.color.gcolor));
+
+            }
 
         }
-
-
 
         lineHome.setOnClickListener(new View.OnClickListener() {
             @Override

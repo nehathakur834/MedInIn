@@ -25,7 +25,9 @@ import com.med.medinin.model.ClinicListModel;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static com.med.medinin.utils.CommonMethods.HOSPITAL_ADDRESS_FIELD;
 import static com.med.medinin.utils.CommonMethods.HOSPITAL_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.HOSPITAL_NAME_FIELD;
 import static com.med.medinin.utils.CommonMethods.editor;
 import static com.med.medinin.utils.CommonMethods.myPref;
 import static com.med.medinin.utils.CommonMethods.sharedPreferences;
@@ -97,10 +99,14 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
                         sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
                         editor = sharedPreferences.edit();
                         String hospital_id = tradeHistoryModelList.get(position).getID();
+                        String hospital_name = tradeHistoryModelList.get(position).getHospital_name();
+                        String hospital_address = tradeHistoryModelList.get(position).getAddress();
+
                         editor.putString(HOSPITAL_ID_FIELD, hospital_id);
+                        editor.putString(HOSPITAL_NAME_FIELD, hospital_name);
+                        editor.putString(HOSPITAL_ADDRESS_FIELD, hospital_address);
                         editor.apply();
                         Intent intent = new Intent(context, TimeSlotActivity.class);
-                       // intent.putExtra("hospt_id",hospital_id);
                         context.startActivity(intent);
 
                     }

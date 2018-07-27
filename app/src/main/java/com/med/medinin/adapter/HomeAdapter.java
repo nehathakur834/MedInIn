@@ -18,6 +18,13 @@ import com.med.medinin.model.DataModel;
 
 import java.util.List;
 
+import static com.med.medinin.utils.CommonMethods.DEPARTMENT_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.DEPARTMENT_NAME_FIELD;
+import static com.med.medinin.utils.CommonMethods.HOSPITAL_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.editor;
+import static com.med.medinin.utils.CommonMethods.myPref;
+import static com.med.medinin.utils.CommonMethods.sharedPreferences;
+
 /**
  * Created by NEHA on 5/3/2018.
  */
@@ -50,6 +57,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
             @Override
             public void onClick(View view) {
                 row_index = position;
+                String departmentId=dataModelList.get(position).getID();
+                String departmentName=dataModelList.get(position).getName();
+                sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                editor.putString(DEPARTMENT_ID_FIELD, departmentId);
+                editor.putString(DEPARTMENT_NAME_FIELD, departmentName);
+                editor.apply();
                 notifyDataSetChanged();
             }
         });

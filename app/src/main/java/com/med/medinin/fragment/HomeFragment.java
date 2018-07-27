@@ -86,6 +86,12 @@ import java.util.Locale;
 import java.util.Map;
 
 import static com.med.medinin.utils.Apis.DEPARTMENTS_URL;
+import static com.med.medinin.utils.CommonMethods.DEPARTMENT_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.DEPARTMENT_NAME_FIELD;
+import static com.med.medinin.utils.CommonMethods.HOSPITAL_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.editor;
+import static com.med.medinin.utils.CommonMethods.myPref;
+import static com.med.medinin.utils.CommonMethods.sharedPreferences;
 
 /**
  * Created by NEHA on 1/10/2018.
@@ -93,6 +99,7 @@ import static com.med.medinin.utils.Apis.DEPARTMENTS_URL;
 
 public class HomeFragment extends Fragment {
     private View view;
+
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     private List<DataModel> dataModelList = new ArrayList<>();
@@ -581,8 +588,10 @@ public class HomeFragment extends Fragment {
                         for (int i = 0; i < result.length(); i++) {
                             JSONObject result1 = result.getJSONObject(i);
                             DataModel f = new DataModel();
+                            f.setID(result1.getString("ID"));
                             f.setName(result1.getString("Name"));
                             dataModelList.add(f);
+
                             }
                             deptData();
 

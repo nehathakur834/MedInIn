@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -34,7 +35,11 @@ import java.util.List;
 
 import static com.android.volley.VolleyLog.TAG;
 import static com.med.medinin.utils.Apis.CREATE_APPOINTMENT_URL;
+import static com.med.medinin.utils.CommonMethods.DEPARTMENT_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.DEPARTMENT_NAME_FIELD;
+import static com.med.medinin.utils.CommonMethods.HOSPITAL_ADDRESS_FIELD;
 import static com.med.medinin.utils.CommonMethods.HOSPITAL_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.HOSPITAL_NAME_FIELD;
 import static com.med.medinin.utils.CommonMethods.TIME_SLOT_FIELD;
 import static com.med.medinin.utils.CommonMethods.editor;
 import static com.med.medinin.utils.CommonMethods.myPref;
@@ -62,7 +67,8 @@ public class TimeSlotFragment extends Fragment {
     private static final int NUMBER_COLUMNS_EVENG= 3;
     ImageView search_icon;
     ProgressDialog dialog;
-
+    TextView hosp_name,hosp_address,hosp_date;
+    String hospitalName,hospitalAddress,hospitalDate;
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +80,15 @@ public class TimeSlotFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_timeslot, container, false);
+        sharedPreferences =getActivity().getSharedPreferences(myPref, Context.MODE_PRIVATE);
+        hospitalName = sharedPreferences.getString(HOSPITAL_NAME_FIELD, null);
+        hospitalAddress = sharedPreferences.getString(HOSPITAL_ADDRESS_FIELD, null);
+        editor = sharedPreferences.edit();
+        hosp_name=view.findViewById(R.id.txt_hosp_name);
+        hosp_address=view.findViewById(R.id.txt_hosp_address);
+        hosp_name.setText(hospitalName);
+        hosp_address.setText(hospitalAddress);
+
         search_icon=view.findViewById(R.id.img_search_icon);
         search_icon.setOnClickListener(new View.OnClickListener() {
             @Override

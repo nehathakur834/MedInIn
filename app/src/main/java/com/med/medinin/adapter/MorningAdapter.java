@@ -111,64 +111,6 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
 
 
     private void departmentMethod() {
-       /*  StringRequest stringRequest = new StringRequest(Request.Method.GET, CREATE_APPOINTMENT_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                JSONObject rs = null;
-                try {
-                    if (dialog != null) {
-                        dialog.dismiss();
-                        dialog = null;
-                    }
-                    rs = new JSONObject(response);
-                    String status = rs.optString("msg");
-                    String error = rs.optString("err");
-                    if (status.equals("success")) {
-                        JSONArray result = rs.getJSONArray("data");
-                        for (int i = 0; i < result.length(); i++) {
-                            JSONObject result1 = result.getJSONObject(i);
-                            DataModel f = new DataModel();
-                            f.setName(result1.getString("Name"));
-                            //dataModelList.add(f);
-                        }
-                       // deptData();
-
-                    } else if (status.equals("false")) {
-                        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (dialog != null) {
-                    dialog.dismiss();
-                    dialog = null;
-                }
-                Toast.makeText(getActivity(), "Some error occurred, please try again", Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        stringRequest.setRetryPolicy(new
-                DefaultRetryPolicy(60000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        requestQueue.add(stringRequest);
-        dialog = new ProgressDialog(getActivity());
-        dialog.setMessage("Please wait....");
-        dialog.setTitle("");
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();*/
-
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("hospital_id", hospitalId);

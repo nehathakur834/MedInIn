@@ -17,8 +17,13 @@ public class CommonMethods {
     public static SharedPreferences.Editor editor;
     public static final String myPref = "mypref";
     /*SharedPreferences keys*/
+    public static final  String DEPARTMENT_ID_FIELD = "deprtId";
+    public static final  String DEPARTMENT_NAME_FIELD = "deprtName";
     public static final  String HOSPITAL_ID_FIELD = "hospitalId";
+    public static final  String HOSPITAL_NAME_FIELD = "hosptName";
+    public static final  String HOSPITAL_ADDRESS_FIELD = "hosptAddress";
     public static final  String TIME_SLOT_FIELD = "timeslot";
+
     public static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
             for (String permission : permissions) {

@@ -57,24 +57,7 @@ public class TimeSlotActivity extends AppCompatActivity {
         homeview=findViewById(R.id.home_view);
         appointview=findViewById(R.id.home_appoitment);
         settingview=findViewById(R.id.home_setting);
-/*        imageHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageHome.setImageResource(R.drawable.ic_explore_blue);
-            }
-        });
-        imgAppoint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageHome.setImageResource(R.drawable.ic_explore_blue);
-            }
-        });
-        imgsetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageHome.setImageResource(R.drawable.ic_explore_blue);
-            }
-        });*/
+
 
         lineHome.setOnClickListener(new View.OnClickListener() {
             @Override
