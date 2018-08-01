@@ -137,14 +137,11 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
                             } else if (status.equals("false")) {
                                 Toast.makeText(context, errror, Toast.LENGTH_SHORT).show();
                             }
-
-
-
-
-                        } catch (JSONException e) {
+                            } catch (JSONException e) {
                             e.printStackTrace();
 
                         }
+
 
                     }
                 }, new Response.ErrorListener() {

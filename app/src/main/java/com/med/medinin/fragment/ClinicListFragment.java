@@ -48,9 +48,12 @@ import java.util.Map;
 import static com.android.volley.VolleyLog.TAG;
 import static com.med.medinin.utils.Apis.CREATE_APPOINTMENT_URL;
 import static com.med.medinin.utils.Apis.HOSPITALS_URL;
+import static com.med.medinin.utils.CommonMethods.ADDRESS_FIELD;
 import static com.med.medinin.utils.CommonMethods.DEPARTMENT_ID_FIELD;
 import static com.med.medinin.utils.CommonMethods.DEPARTMENT_NAME_FIELD;
 import static com.med.medinin.utils.CommonMethods.HOSPITAL_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.LATITUDE_FIELD;
+import static com.med.medinin.utils.CommonMethods.LONGITUDE_FIELD;
 import static com.med.medinin.utils.CommonMethods.TIME_SLOT_FIELD;
 import static com.med.medinin.utils.CommonMethods.editor;
 import static com.med.medinin.utils.CommonMethods.myPref;
@@ -68,7 +71,7 @@ public class ClinicListFragment extends Fragment {
     ImageView mapView;
     ProgressDialog dialog;
     LinearLayout linear_circle;
-    String depart_id,depart_name;
+    String depart_id,depart_name,address_field,st_lang,st_longt;
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,6 +88,10 @@ public class ClinicListFragment extends Fragment {
         sharedPreferences =getActivity().getSharedPreferences(myPref, Context.MODE_PRIVATE);
         depart_id = sharedPreferences.getString(DEPARTMENT_ID_FIELD, null);
         depart_name = sharedPreferences.getString(DEPARTMENT_NAME_FIELD, null);
+        address_field = sharedPreferences.getString(ADDRESS_FIELD, null);
+        st_lang = sharedPreferences.getString(LATITUDE_FIELD, null);
+        st_longt = sharedPreferences.getString(LONGITUDE_FIELD, null);
+
         editor = sharedPreferences.edit();
         linear_circle =view.findViewById(R.id.linear_circle);
         linear_circle.setOnClickListener(new View.OnClickListener() {
@@ -115,20 +122,20 @@ public class ClinicListFragment extends Fragment {
 
     private void hospitalMethod() {
 
-/*
+
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("department_id", depart_id);
             jsonObject.put("department_name", depart_name);
-            jsonObject.put("address", "");
+            jsonObject.put("address", address_field);
             jsonObject.put("distance", "1");
-            jsonObject.put("lat", "12.9183494");
-            jsonObject.put("lng", "77.627675");
+            jsonObject.put("lat", st_lang);
+            jsonObject.put("lng", st_longt);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, CREATE_APPOINTMENT_URL,
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, HOSPITALS_URL,
                 jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -211,9 +218,9 @@ public class ClinicListFragment extends Fragment {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonObjReq);
-    }*/
+    }
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, HOSPITALS_URL, new Response.Listener<String>() {
+          /*  StringRequest stringRequest = new StringRequest(Request.Method.POST, HOSPITALS_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject rs = null;
@@ -283,8 +290,8 @@ public class ClinicListFragment extends Fragment {
         dialog.setTitle("");
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-    }
+        dialog.show();*/
+
     private void deptData() {
         ClinicListAdapter clinicListAdapter = new ClinicListAdapter(getActivity(), clinicListModelList);
         recyclerView.setAdapter(clinicListAdapter);

@@ -55,6 +55,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.karumi.dexter.Dexter;
@@ -86,9 +87,12 @@ import java.util.Locale;
 import java.util.Map;
 
 import static com.med.medinin.utils.Apis.DEPARTMENTS_URL;
+import static com.med.medinin.utils.CommonMethods.ADDRESS_FIELD;
 import static com.med.medinin.utils.CommonMethods.DEPARTMENT_ID_FIELD;
 import static com.med.medinin.utils.CommonMethods.DEPARTMENT_NAME_FIELD;
 import static com.med.medinin.utils.CommonMethods.HOSPITAL_ID_FIELD;
+import static com.med.medinin.utils.CommonMethods.LATITUDE_FIELD;
+import static com.med.medinin.utils.CommonMethods.LONGITUDE_FIELD;
 import static com.med.medinin.utils.CommonMethods.editor;
 import static com.med.medinin.utils.CommonMethods.myPref;
 import static com.med.medinin.utils.CommonMethods.sharedPreferences;
@@ -99,7 +103,11 @@ import static com.med.medinin.utils.CommonMethods.sharedPreferences;
 
 public class HomeFragment extends Fragment {
     private View view;
-
+    LatLng sourceLatLag;
+    double sourceLat = 0, sourceLag = 0, destLat = 0, destLag = 0;
+    int currAngle=0;
+    int mile=0;
+    int result=0;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     private List<DataModel> dataModelList = new ArrayList<>();
@@ -213,10 +221,10 @@ public class HomeFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               // callMethod();
                 Intent i = new Intent(getActivity(), SearchClinicActivity.class);
                 startActivity(i);
-
-            }
+                }
         });
 
 
@@ -298,6 +306,8 @@ public class HomeFragment extends Fragment {
                     double currentAngle = getAngle(event.getX(), event.getY());
                     rotateDialer((float) (startAngle - currentAngle));
                     startAngle = currentAngle;
+                    currAngle = (int) Math.round(currentAngle);
+                    Log.e("current angle",String.valueOf(startAngle));
                     break;
 
                 case MotionEvent.ACTION_UP:
@@ -442,6 +452,7 @@ public class HomeFragment extends Fragment {
             try {
                 geocoder = new Geocoder(context, Locale.getDefault());
                 addresses = geocoder.getFromLocation(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -452,10 +463,22 @@ public class HomeFragment extends Fragment {
                 String country = addresses.get(0).getCountryName();
                 String postalCode = addresses.get(0).getPostalCode();
                 String knownName = addresses.get(0).getFeatureName();
-
                 mEditSpinner.setText(address);
                 mEditSpinner.setSelection(mEditSpinner.getText().length());
                 mEditSpinner.requestFocus();
+
+                LatLng latLng = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                sourceLatLag = latLng;
+                sourceLat = mCurrentLocation.getLatitude();
+                sourceLag = mCurrentLocation.getLongitude();
+                String stgLat=String.valueOf(sourceLat);
+                String stgLag=String.valueOf(sourceLag);
+                sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                editor.putString(LATITUDE_FIELD, stgLat);
+                editor.putString(LONGITUDE_FIELD, stgLag);
+                editor.putString(ADDRESS_FIELD, address);
+                editor.apply();
             }
             //Toast.makeText(getActivity(), address+"-"+city,Toast.LENGTH_SHORT).show();
 
@@ -635,5 +658,33 @@ public class HomeFragment extends Fragment {
         HomeAdapter clinicListAdapter = new HomeAdapter(getActivity(), dataModelList);
         recyclerView.setAdapter(clinicListAdapter);
     }
+    public  void callMethod() {
 
+        if(currAngle<270)
+        {
+           result=currAngle/18;
+           if (currAngle%18==0)
+           {
+               mile=15-result;
+           }
+            else {
+               mile=15-result;
+           }
+
+        }
+        else if(currAngle>=270)
+        {
+
+            result=currAngle/18;
+            /*if(currAngle%18==0)
+            {
+                mile=20+(15-result);
+            }
+            else{*/
+                mile=20+(15-result);
+         //   }
+        }
+
+        Toast.makeText(getActivity(), String.valueOf(mile), Toast.LENGTH_SHORT).show();
+    }
 }

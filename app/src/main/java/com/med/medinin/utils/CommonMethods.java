@@ -17,6 +17,9 @@ public class CommonMethods {
     public static SharedPreferences.Editor editor;
     public static final String myPref = "mypref";
     /*SharedPreferences keys*/
+    public static final  String LATITUDE_FIELD = "latId";
+    public static final  String LONGITUDE_FIELD = "longId";
+    public static final  String ADDRESS_FIELD = "addressId";
     public static final  String DEPARTMENT_ID_FIELD = "deprtId";
     public static final  String DEPARTMENT_NAME_FIELD = "deprtName";
     public static final  String HOSPITAL_ID_FIELD = "hospitalId";
