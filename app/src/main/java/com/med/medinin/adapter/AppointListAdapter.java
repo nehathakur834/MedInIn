@@ -36,6 +36,7 @@ public class AppointListAdapter extends RecyclerView.Adapter<AppointListAdapter.
 
     @Override
     public void onBindViewHolder(AppointListAdapter.CustomViewHolder holder, int position) {
+        holder.txt_starttime.setText(data.get(position).getBooking_time());
         holder.txt_bookingdate.setText(data.get(position).getBooking_date());
         holder.txt_clinicname.setText(data.get(position).getHospital().getHospital_name());
         holder.txt_aptmt_address.setText(data.get(position).getHospital().getAddress());
@@ -48,10 +49,11 @@ public class AppointListAdapter extends RecyclerView.Adapter<AppointListAdapter.
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_clinicname, txt_bookingdate, txt_aptmt_address ;
+        TextView txt_starttime,txt_clinicname, txt_bookingdate, txt_aptmt_address ;
 
         public CustomViewHolder(View itemView) {
             super(itemView);
+            txt_starttime = itemView.findViewById(R.id.appnt_starttime);
             txt_bookingdate = itemView.findViewById(R.id.aptmnt_bookingdate);
             txt_clinicname = itemView.findViewById(R.id.aptmnt_clinicname);
             txt_aptmt_address = itemView.findViewById(R.id.aptmt_address);

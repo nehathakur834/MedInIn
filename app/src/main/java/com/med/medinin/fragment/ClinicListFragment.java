@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -72,6 +73,9 @@ public class ClinicListFragment extends Fragment {
     ProgressDialog dialog;
     LinearLayout linear_circle;
     String depart_id,depart_name,address_field,st_lang,st_longt;
+    TextView frg_clinicname,frg_cliniccount;
+    List<String> serviceList;
+    String count;
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,10 @@ public class ClinicListFragment extends Fragment {
         address_field = sharedPreferences.getString(ADDRESS_FIELD, null);
         st_lang = sharedPreferences.getString(LATITUDE_FIELD, null);
         st_longt = sharedPreferences.getString(LONGITUDE_FIELD, null);
+        frg_clinicname=view.findViewById(R.id.frag_clinicname);
+        frg_cliniccount=view.findViewById(R.id.frag_cliniccount);
+        frg_clinicname.setText(depart_name);
+
 
         editor = sharedPreferences.edit();
         linear_circle =view.findViewById(R.id.linear_circle);
@@ -156,6 +164,20 @@ public class ClinicListFragment extends Fragment {
                                     f.setDistance_from(result1.getString("distance_from"));
                                     f.setTotal_reviews(result1.getString("total_reviews"));
                                     JSONArray st = result1.getJSONArray("services");
+                                    serviceList =new ArrayList<>();
+                                    try {
+                                        // jsonString is a string variable that holds the JSON
+                                        for (int i2 = 0; i2 < st.length(); i2++) {
+                                            String value=st.getString(i2);
+                                            Log.e("json", i2+"="+value);
+                                            serviceList.add(value);
+                                        }
+                                    } catch (JSONException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                    }
+
+
                                     String[] street= new String[st.length()];
                                     for(int j=0;j<st.length();j++)
                                     {
@@ -220,7 +242,16 @@ public class ClinicListFragment extends Fragment {
         requestQueue.add(jsonObjReq);
     }
 
-          /*  StringRequest stringRequest = new StringRequest(Request.Method.POST, HOSPITALS_URL, new Response.Listener<String>() {
+
+    private void deptData() {
+        ClinicListAdapter clinicListAdapter = new ClinicListAdapter(getActivity(), clinicListModelList,serviceList);
+        recyclerView.setAdapter(clinicListAdapter);
+        count = ""+recyclerView.getAdapter().getItemCount();
+        frg_cliniccount.setText(count);
+    }
+
+
+   /*  StringRequest stringRequest = new StringRequest(Request.Method.POST, HOSPITALS_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject rs = null;
@@ -291,13 +322,6 @@ public class ClinicListFragment extends Fragment {
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();*/
-
-    private void deptData() {
-        ClinicListAdapter clinicListAdapter = new ClinicListAdapter(getActivity(), clinicListModelList);
-        recyclerView.setAdapter(clinicListAdapter);
-    }
-
-
 
 
 

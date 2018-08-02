@@ -59,6 +59,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/appnt_starttime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="10:20am"
@@ -84,7 +85,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="11:20am"
+                android:text=""
                 android:textSize="@dimen/_8ssp"
                 android:layout_marginTop="18dp"/>
 

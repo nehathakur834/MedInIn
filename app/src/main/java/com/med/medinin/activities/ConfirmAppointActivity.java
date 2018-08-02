@@ -20,11 +20,13 @@ public class ConfirmAppointActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 10000;
     TextView confm_name,confm_address;
-    String confirmName,confirmAddress;
+    String confirmName,confirmAddress,time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmapoint);
+        Intent intent = getIntent();
+        time = intent.getStringExtra("time_slot");
         sharedPreferences =getSharedPreferences(myPref, Context.MODE_PRIVATE);
         confirmName = sharedPreferences.getString(HOSPITAL_NAME_FIELD, null);
         confirmAddress = sharedPreferences.getString(HOSPITAL_ADDRESS_FIELD, null);
@@ -32,7 +34,7 @@ public class ConfirmAppointActivity extends AppCompatActivity {
         confm_name=findViewById(R.id.confm_hospname);
         confm_address=findViewById(R.id.confm_hospaddress);
         confm_name.setText(confirmName);
-        confm_address.setText(confirmAddress);
+        confm_address.setText(confirmAddress+" "+"at"+" "+time);
 
         new Handler().postDelayed(new Runnable() {
             @Override

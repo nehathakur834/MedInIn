@@ -48,6 +48,7 @@
 
 
             <TextView
+                android:id="@+id/frag_cliniccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -60,6 +61,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/frag_clinicname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -78,6 +80,7 @@
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:gravity="center"
+            android:visibility="gone"
             android:text="2731, Despord Street,QA"
             android:textColor="@color/color_white"
             android:textSize="10sp" />

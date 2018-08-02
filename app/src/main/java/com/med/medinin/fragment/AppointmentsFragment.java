@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -60,7 +61,8 @@ public class AppointmentsFragment extends Fragment {
     private List<Data> dataList = new ArrayList<>();
     FloatingActionButton fab;
     ImageView img_search;
-
+    TextView apptmnt_count;
+    String count;
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,7 @@ public class AppointmentsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_appointmentlist, container, false);
-
+        apptmnt_count = view.findViewById(R.id.appont_count);
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_appointlist);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -116,6 +118,7 @@ public class AppointmentsFragment extends Fragment {
                             Data f = new Data();
                             f.setID(result1.getString("ID"));
                             f.setBooking_date(result1.getString("booking_date"));
+                            f.setBooking_time(result1.getString("booking_time"));
                             JSONObject stobject = result1.getJSONObject("hospital");
                             Hospital ff=new Hospital();
                             ff.setHospital_name(stobject.getString("hospital_name"));
@@ -179,7 +182,8 @@ public class AppointmentsFragment extends Fragment {
     private void deptData() {
         AppointListAdapter clinicListAdapter = new AppointListAdapter(getActivity(), dataList);
         recyclerView.setAdapter(clinicListAdapter);
-
+        count = ""+recyclerView.getAdapter().getItemCount();
+        apptmnt_count.setText(count);
     }
 
 

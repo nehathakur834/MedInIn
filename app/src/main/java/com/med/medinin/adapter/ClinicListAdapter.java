@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.med.medinin.R;
 import com.med.medinin.activities.TimeSlotActivity;
 import com.med.medinin.model.ClinicListModel;
+import com.med.medinin.model.Data;
 
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.med.medinin.utils.CommonMethods.HOSPITAL_ADDRESS_FIELD;
@@ -42,9 +45,14 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
     List<ClinicListModel> tradeHistoryModelList;
     ImageView iv_close1;
     Button btnAppointment;
-    public ClinicListAdapter(Context context, List<ClinicListModel> tradeHistoryModelList) {
+    RecyclerView rViewServices;
+    private static final int NUMBER_COLUMNS = 3;
+    List<String> serviceList;
+
+    public ClinicListAdapter(Context context, List<ClinicListModel> tradeHistoryModelList,List<String> serviceList) {
         this.context = context;
         this.tradeHistoryModelList = tradeHistoryModelList;
+        this.serviceList=serviceList;
     }
 
     @Override
@@ -77,6 +85,9 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().getDecorView().getResources().getColor(R.color.greydialog);
                 dialog.setCanceledOnTouchOutside(false);
+
+              //  List<ClinicListModel> servicesList = new ArrayList<>();
+
                 btnAppointment = dialog.findViewById(R.id.btn_bookappointment);
                 iv_close1 = dialog.findViewById(R.id.icon_close1);
                 RatingBar rate=(RatingBar)dialog.findViewById(R.id.rate);
@@ -87,6 +98,13 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cu
                 hospAddress.setText(tradeHistoryModelList.get(position).getAddress());
                 hospReview.setText(tradeHistoryModelList.get(position).getTotal_reviews());
                 rate.setRating(Float.parseFloat(tradeHistoryModelList.get(position).getRating()));
+
+                rViewServices = (RecyclerView)dialog.findViewById(R.id.rView_services);
+                rViewServices.setLayoutManager(new GridLayoutManager(context, NUMBER_COLUMNS));
+                rViewServices.setHasFixedSize(true);
+                ServicesAdapter servicesAdapter = new ServicesAdapter(context, serviceList);
+                rViewServices.setAdapter(servicesAdapter);
+
                 iv_close1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -2,6 +2,8 @@ package com.med.medinin.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,18 +56,15 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
     Context context;
     List<MorningTimeModel> morningTimeModelList;
     String hospitalId, timeSlot;
-    String time;
+    String time,bookingtime;
 
     public MorningAdapter(Context context, List<MorningTimeModel> morningTimeModelList) {
         this.context = context;
         this.morningTimeModelList = morningTimeModelList;
-
-
-    }
+        }
 
     @Override
     public MorningAdapter.CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemlist_morning, parent, false);
         return new MorningAdapter.CustomViewHolder(view);
     }
@@ -76,18 +75,15 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
                 hospitalId = sharedPreferences.getString(HOSPITAL_ID_FIELD, null);
                 editor = sharedPreferences.edit();
                 time = morningTimeModelList.get(position).getName();
                 departmentMethod();
-
-            }
+                }
         });
 
-
-    }
+        }
 
     @Override
     public int getItemCount() {
@@ -99,10 +95,7 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
 
         public CustomViewHolder(View itemView) {
             super(itemView);
-         /*   sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
-            hospitalId = sharedPreferences.getString(HOSPITAL_ID_FIELD, null);
-            timeSlot = sharedPreferences.getString(TIME_SLOT_FIELD, null);
-            editor = sharedPreferences.edit();*/
+
             tv_morning = itemView.findViewById(R.id.tv_morning);
 
         }
@@ -131,7 +124,12 @@ public class MorningAdapter extends RecyclerView.Adapter<MorningAdapter.CustomVi
                             String status = response.getString("msg");
                             if (status.equals("success")) {
                                 JSONArray result = response.getJSONArray("data");
+                                for (int i = 0; i < result.length(); i++) {
+                                    response = result.getJSONObject(i);
+                                    bookingtime= response.getString("booking_time");
+                                    }
                                 Intent i = new Intent(context, ConfirmAppointActivity.class);
+                                i.putExtra("time_slot",time);
                                 context.startActivity(i);
 
                             } else if (status.equals("false")) {
