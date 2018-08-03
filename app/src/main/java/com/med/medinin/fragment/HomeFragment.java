@@ -659,7 +659,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(clinicListAdapter);
     }
     public  void callMethod() {
-
         if(currAngle<270)
         {
            result=currAngle/18;
@@ -684,7 +683,6 @@ public class HomeFragment extends Fragment {
                 mile=20+(15-result);
          //   }
         }
-
         Toast.makeText(getActivity(), String.valueOf(mile), Toast.LENGTH_SHORT).show();
     }
 }

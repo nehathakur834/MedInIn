@@ -85,7 +85,7 @@
             android:textColor="@color/color_white"
             android:textSize="10sp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
@@ -93,6 +93,7 @@
             android:layout_marginRight="14dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:background="@drawable/shape_linear">
 
             <LinearLayout
@@ -181,29 +182,35 @@
                         android:scrollbars="vertical" />
 
 
-                    <LinearLayout
-                        android:id="@+id/linear_circle"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_gravity="bottom|end"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/et_circle_gradient">
 
-                        <ImageView
-                            android:src="@drawable/icon_floating"
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            />
-
-                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_gradient_clinic"/>
                 </RelativeLayout>
+
             </LinearLayout>
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_circle"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/et_circle_gradient">
+
+                <ImageView
+                    android:src="@drawable/icon_floating"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 

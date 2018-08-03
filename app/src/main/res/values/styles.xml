@@ -20,7 +20,7 @@
     </style>
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/color_gray</item>
-        <item name="colorControlActivated">@color/gradientCloudy_c1</item>
+        <item name="colorControlActivated">@color/color_blue</item>
 
     </style>
     <style name="customRatingBar"
