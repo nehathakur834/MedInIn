@@ -22,6 +22,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -108,7 +109,7 @@ public class HomeFragment extends Fragment {
     int currAngle=0;
     int mile=0;
     int result=0;
-    RecyclerView recyclerView;
+   public static RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     private List<DataModel> dataModelList = new ArrayList<>();
     private LocationManager locationManager;
@@ -158,7 +159,7 @@ public class HomeFragment extends Fragment {
     private boolean[] quadrantTouched;
     private boolean allowRotating;
     ProgressDialog dialog;
-
+    int review_position;
 
     @Nullable
     @Override
@@ -178,6 +179,43 @@ public class HomeFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setHasFixedSize(true);
+        //final RecyclerView recyclerViewObject = view.findViewById(R.id.recyclerViewObjectId);
+
+        final LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        recyclerView.setOnFlingListener(snapHelper);
+
+
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                review_position = linearLayoutManager.getPosition(recyclerView);
+//            }
+//        });
+
+
+        //recyclerView.scrollToPosition(review_position+3);
+        recyclerView.scrollToPosition(4);
         departmentMethod();
         mEditSpinner = (EditSpinner) view.findViewById(R.id.edit_spinner);
         init();

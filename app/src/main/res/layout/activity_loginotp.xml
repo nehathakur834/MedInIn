@@ -22,11 +22,11 @@
 
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/logo" />
+            android:background="@drawable/med_logo" />
 
         <TextView
             android:layout_width="match_parent"
@@ -34,6 +34,7 @@
             android:text="Welcome!"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:textColor="@color/color_btn"
             android:gravity="center"/>
         <TextView
@@ -63,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:hint="7895845554"
                 android:gravity="center"
+                android:inputType="phone"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/transparent"/>
             
@@ -70,8 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/color_gray"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"/>
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"/>
 
 
         </LinearLayout>
@@ -87,7 +89,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="enter Otp"
+                android:hint="enter OTP"
+                android:inputType="phone"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/transparent"/>
@@ -107,8 +110,8 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45ssp"
-            android:layout_marginRight="80dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="30dp"
             android:text="LOGIN"
             android:textColor="@color/color_white"
@@ -124,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Didn't receive the OTP?"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_marginTop="20dp"
                 android:layout_alignParentBottom="true"
                 android:gravity="center"/>

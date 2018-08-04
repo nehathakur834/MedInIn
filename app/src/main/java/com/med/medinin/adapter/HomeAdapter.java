@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.med.medinin.R;
 import com.med.medinin.model.DataModel;
+//import com.med.medinin.fragment.HomeFragment.recyclerView;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
     }
 
     @Override
-    public void onBindViewHolder(HomeAdapter.CustomViewHolder holder, final int position) {
+    public void onBindViewHolder(final HomeAdapter.CustomViewHolder holder, final int position) {
        // Glide.with(context).load(dataModelList.get(position)).into(holder.image);
         Glide.with(context)
                 .load(R.drawable.icon_respiratory)
@@ -57,7 +58,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomViewHold
             @Override
             public void onClick(View view) {
                 row_index = position;
-                String departmentId=dataModelList.get(position).getID();
+                //recyclerView
+                String departmentId = dataModelList.get(position).getID();
                 String departmentName=dataModelList.get(position).getName();
                 sharedPreferences =context.getSharedPreferences(myPref, Context.MODE_PRIVATE);
                 editor = sharedPreferences.edit();
