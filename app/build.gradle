@@ -50,7 +50,7 @@ dependencies {
     implementation 'com.karumi:dexter:4.2.0'
     implementation 'com.intuit.ssp:ssp-android:1.0.5'
     implementation 'com.reginald:editspinner:1.0.0'
-    implementation 'com.layer-net:step-indicator:1.1.0'
+    implementation 'com.github.badoualy:stepper-indicator:1.0.7'
 
 }
 

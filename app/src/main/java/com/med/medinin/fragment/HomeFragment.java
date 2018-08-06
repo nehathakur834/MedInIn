@@ -181,7 +181,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         //final RecyclerView recyclerViewObject = view.findViewById(R.id.recyclerViewObjectId);
 
-        final LinearSnapHelper snapHelper = new LinearSnapHelper();
+      /*  final LinearSnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
 
         recyclerView.setOnFlingListener(snapHelper);
@@ -203,7 +203,7 @@ public class HomeFragment extends Fragment {
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
             }
-        });
+        });*/
 
 //        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
@@ -215,7 +215,7 @@ public class HomeFragment extends Fragment {
 
 
         //recyclerView.scrollToPosition(review_position+3);
-        recyclerView.scrollToPosition(4);
+       // recyclerView.scrollToPosition(4);
         departmentMethod();
         mEditSpinner = (EditSpinner) view.findViewById(R.id.edit_spinner);
         init();
@@ -250,9 +250,7 @@ public class HomeFragment extends Fragment {
                     public void onPermissionRationaleShouldBeShown(com.karumi.dexter.listener.PermissionRequest permission, PermissionToken token) {
                         token.continuePermissionRequest();
                     }
-
-
-                }).check();
+                    }).check();
 
 
         btnSearch = view.findViewById(R.id.btn_search);
