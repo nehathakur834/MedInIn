@@ -21,7 +21,7 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
     private String mParam1;
     private String mParam2;
 
-    private OnStepTwoListener mListener;
+    private BePartnerStepTwoFragment.OnStepTwoListener mListener;
 
     public BePartnerStepTwoFragment() {
         // Required empty public constructor
@@ -58,7 +58,8 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_fullregtwo, container, false);
+        View viiew= inflater.inflate(R.layout.frag_fullregtwo, container, false);
+        return viiew;
     }
 
     private Button backBT;
@@ -67,9 +68,8 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        backBT=view.findViewById(R.id.backBT);
-        nextBT=view.findViewById(R.id.nextBT);
+        backBT = view.findViewById(R.id.backBT2);
+        nextBT=view.findViewById(R.id.next_two_BT);
     }
 
     @Override
@@ -82,8 +82,9 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
     @Override
     public void onPause() {
         super.onPause();
-        backBT.setOnClickListener(null);
-        nextBT.setOnClickListener(null);
+        backBT.setOnClickListener(this);
+        nextBT.setOnClickListener(this);
+
     }
 
 
@@ -91,12 +92,12 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
     public void onClick(View view) {
 
         switch (view.getId()) {
+
             case R.id.backBT:
                 if (mListener != null)
                     mListener.onBackPressed(this);
                 break;
-
-            case R.id.nextBT:
+            case R.id.next_two_BT:
                 if (mListener != null)
                     mListener.onNextPressed(this);
                 break;
@@ -106,8 +107,8 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnStepTwoListener) {
-            mListener = (OnStepTwoListener) context;
+        if (context instanceof BePartnerStepTwoFragment.OnStepTwoListener) {
+            mListener = (BePartnerStepTwoFragment.OnStepTwoListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -118,7 +119,7 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
     public void onDetach() {
         super.onDetach();
         mListener = null;
-        backBT=null;
+        backBT = null;
         nextBT=null;
     }
 
@@ -134,7 +135,6 @@ public class BePartnerStepTwoFragment extends Fragment implements View.OnClickLi
      */
     public interface OnStepTwoListener {
         void onBackPressed(Fragment fragment);
-
         void onNextPressed(Fragment fragment);
 
     }

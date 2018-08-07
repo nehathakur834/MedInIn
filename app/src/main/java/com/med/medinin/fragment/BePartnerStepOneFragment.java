@@ -21,7 +21,7 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
     private String mParam1;
     private String mParam2;
 
-    private OnStepOneListener mListener;
+    private BePartnerStepOneFragment.OnStepOneListener mListener;
 
     public BePartnerStepOneFragment() {
         // Required empty public constructor
@@ -58,7 +58,8 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_fullregone, container, false);
+       View viiew =inflater.inflate(R.layout.frag_fullregone, container, false);
+       return viiew;
     }
 
     private Button nextBT;
@@ -66,7 +67,7 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        nextBT = view.findViewById(R.id.nextBT);
+        nextBT = view.findViewById(R.id.nextBT1);
 
     }
 
@@ -88,7 +89,7 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.nextBT:
+            case R.id.nextBT1:
                 if (mListener != null)
                     mListener.onNextPressed(this);
                 break;
@@ -100,8 +101,8 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnStepOneListener) {
-            mListener = (OnStepOneListener) context;
+        if (context instanceof BePartnerStepOneFragment.OnStepOneListener) {
+            mListener = (BePartnerStepOneFragment.OnStepOneListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

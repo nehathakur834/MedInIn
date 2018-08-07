@@ -95,34 +95,72 @@
     </ScrollView>
 
 
-    <RelativeLayout
+  <!--  <RelativeLayout
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:padding="5dp">
 
-        <Button
-            android:id="@+id/backBT"
+     &lt;!&ndash;   <Button
+            android:id="@+id/back_two_BT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:background="@color/color_btn"
             android:minWidth="120dp"
             android:text="BACK"
+            android:textColor="@color/color_white" />&ndash;&gt;
+
+        <Button
+            android:id="@+id/backBT2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@color/color_btn"
+            android:text="Back"
             android:textColor="@color/color_white" />
 
         <Button
-            android:id="@+id/nextBT"
+            android:id="@+id/next_two_BT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@color/color_btn"
-            android:minWidth="120dp"
             android:text="NEXT"
             android:textColor="@color/color_white" />
 
+    </RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/backBT2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:minWidth="120dp"
+            android:text="back"
+            android:textColor="@color/color_white"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/next_two_BT"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45ssp"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:text="NEXT"
+            android:background="@drawable/et_button"
+            android:textColor="@color/color_white" />
+
     </RelativeLayout>
-
-
 </RelativeLayout>

@@ -24,7 +24,7 @@ public class BePartnerStepThreeFragment extends Fragment implements View.OnClick
     private String mParam1;
     private String mParam2;
 
-    private OnStepThreeListener mListener;
+    private BePartnerStepThreeFragment.OnStepThreeListener mListener;
 
     public BePartnerStepThreeFragment() {
         // Required empty public constructor
@@ -61,9 +61,9 @@ public class BePartnerStepThreeFragment extends Fragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_fullregthree, container, false);
+        View viiew= inflater.inflate(R.layout.frag_fullregthree, container, false);
 
-
+return viiew;
     }
 
     private Button backBT;
@@ -73,7 +73,7 @@ public class BePartnerStepThreeFragment extends Fragment implements View.OnClick
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        backBT=view.findViewById(R.id.backBT);
+        backBT=view.findViewById(R.id.backBT3);
         nextBT=view.findViewById(R.id.nextBT);
     }
 
@@ -97,7 +97,7 @@ public class BePartnerStepThreeFragment extends Fragment implements View.OnClick
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.backBT:
+            case R.id.backBT3:
                 if (mListener != null)
                     mListener.onBackPressed(this);
                 break;
@@ -115,8 +115,8 @@ public class BePartnerStepThreeFragment extends Fragment implements View.OnClick
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnStepThreeListener) {
-            mListener = (OnStepThreeListener) context;
+        if (context instanceof BePartnerStepThreeFragment.OnStepThreeListener) {
+            mListener = (BePartnerStepThreeFragment.OnStepThreeListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

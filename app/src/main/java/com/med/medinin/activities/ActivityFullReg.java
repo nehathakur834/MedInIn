@@ -111,6 +111,8 @@ public class ActivityFullReg  extends AppCompatActivity implements  BePartnerSte
             mViewPager.setCurrentItem(0, true);
         } else if (fragment instanceof BePartnerStepTwoFragment) {
             mViewPager.setCurrentItem(1, true);
+        } else if (fragment instanceof BePartnerStepThreeFragment) {
+            mViewPager.setCurrentItem(2, true);
         }
     }
 
