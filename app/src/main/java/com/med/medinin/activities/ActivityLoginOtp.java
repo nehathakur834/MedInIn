@@ -18,7 +18,7 @@ public class ActivityLoginOtp extends AppCompatActivity {
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(ActivityLoginOtp.this, ActivityRegister.class);
+                    Intent i = new Intent(ActivityLoginOtp.this, ActivityFullReg.class);
                     startActivity(i);
                 }
             });

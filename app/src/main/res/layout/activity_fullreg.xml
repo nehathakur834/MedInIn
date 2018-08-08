@@ -80,9 +80,6 @@
         app:stpi_showStepNumberInstead="true"
         app:stpi_stepCount="3" />
 
-
-    -
-
     <com.med.medinin.activities.NonSwipeableViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/container_seller"
@@ -90,9 +87,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/stepper_indicator_seller"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/shape_linear" />
-
 </RelativeLayout>
