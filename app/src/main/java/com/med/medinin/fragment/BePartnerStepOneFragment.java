@@ -7,11 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.med.medinin.R;
+import com.reginald.editspinner.EditSpinner;
 
-public class BePartnerStepOneFragment extends Fragment implements View.OnClickListener {
+public class BePartnerStepOneFragment extends Fragment implements View.OnClickListener ,AdapterView.OnItemSelectedListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -20,6 +24,8 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Spinner mEditSpinner;
+    String[] bankNames = {"Myself", "Others"};
 
     private BePartnerStepOneFragment.OnStepOneListener mListener;
 
@@ -59,6 +65,13 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View viiew =inflater.inflate(R.layout.frag_fullregone, container, false);
+
+        mEditSpinner = (Spinner) viiew.findViewById(R.id.spinner_registration);
+        mEditSpinner.setOnItemSelectedListener(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item,bankNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mEditSpinner.setAdapter(adapter);
+
        return viiew;
     }
 
@@ -114,6 +127,16 @@ public class BePartnerStepOneFragment extends Fragment implements View.OnClickLi
         super.onDetach();
         mListener = null;
         nextBT = null;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
     /**

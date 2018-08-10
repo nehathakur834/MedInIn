@@ -12,8 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +37,7 @@ import com.med.medinin.MainActivity;
 import com.med.medinin.R;
 import com.med.medinin.activities.ConfirmAppointActivity;
 import com.med.medinin.activities.MapStartActivity;
+import com.med.medinin.activities.SearchClinicActivity;
 import com.med.medinin.adapter.ClinicListAdapter;
 import com.med.medinin.model.ClinicListModel;
 
@@ -64,7 +69,7 @@ import static com.med.medinin.utils.CommonMethods.sharedPreferences;
  * Created by NEHA on 1/10/2018.
  */
 
-public class ClinicListFragment extends Fragment {
+public class ClinicListFragment extends Fragment implements AdapterView.OnItemSelectedListener{
     private View view;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
@@ -73,9 +78,12 @@ public class ClinicListFragment extends Fragment {
     ProgressDialog dialog;
     LinearLayout linear_circle;
     String depart_id,depart_name,address_field,st_lang,st_longt;
-    TextView frg_clinicname,frg_cliniccount;
+    TextView frg_clinicname,frg_cliniccount,back_text;
     List<String> serviceList;
     String count;
+    EditText edit_spin;
+    Spinner mEditSpinner;
+    String[] bankNames = {"Sort","Price", "Brand","Size"};
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,11 +103,52 @@ public class ClinicListFragment extends Fragment {
         address_field = sharedPreferences.getString(ADDRESS_FIELD, null);
         st_lang = sharedPreferences.getString(LATITUDE_FIELD, null);
         st_longt = sharedPreferences.getString(LONGITUDE_FIELD, null);
+
+        edit_spin =  view.findViewById(R.id.editable_spinner);
+        mEditSpinner = (Spinner) view.findViewById(R.id.spinner_sort);
+        mEditSpinner.setOnItemSelectedListener(this);
+        edit_spin.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View arg0, boolean hasFocus) {
+                // TODO Auto-generated method stub
+                if(hasFocus){
+                    mEditSpinner.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
+
+        mEditSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
+                //edit_spin.setText(mEditSpinner.getSelectedItem().toString()); //this is taking the first value of the spinner by default.
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+       /* ArrayAdapter<CharSequence> langAdapter = new ArrayAdapter<CharSequence>(getActivity(), R.layout.spinner_text, bankNames );
+        langAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown);*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item,bankNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mEditSpinner.setAdapter(adapter);
+        back_text=view.findViewById(R.id.back_txt);
+        back_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),SearchClinicActivity.class);
+                startActivity(intent);
+            }
+        });
         frg_clinicname=view.findViewById(R.id.frag_clinicname);
         frg_cliniccount=view.findViewById(R.id.frag_cliniccount);
         frg_clinicname.setText(depart_name);
-
-
         editor = sharedPreferences.edit();
         linear_circle =view.findViewById(R.id.linear_circle);
         linear_circle.setOnClickListener(new View.OnClickListener() {
@@ -248,6 +297,16 @@ public class ClinicListFragment extends Fragment {
         recyclerView.setAdapter(clinicListAdapter);
         count = ""+recyclerView.getAdapter().getItemCount();
         frg_cliniccount.setText(count);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
 

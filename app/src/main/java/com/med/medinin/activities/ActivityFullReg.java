@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.badoualy.stepperindicator.StepperIndicator;
@@ -22,12 +24,29 @@ public class ActivityFullReg  extends AppCompatActivity implements  BePartnerSte
      * The {@link ViewPager} that will host the section contents.
      */
     private NonSwipeableViewPager mViewPager;
+    TextView txtback,txtcancel;
 
     private StepperIndicator stepperIndicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullreg);
+        txtback=findViewById(R.id.back_fullreg);
+        txtcancel=findViewById(R.id.cancel_fullreg);
+        txtback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityFullReg.this, ActivityLoginOtp.class);
+                startActivity(intent);
+            }
+        });
+        txtback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               finish();
+
+            }
+        });
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapterSeller(getSupportFragmentManager());
@@ -97,7 +116,7 @@ public class ActivityFullReg  extends AppCompatActivity implements  BePartnerSte
         } else if (fragment instanceof BePartnerStepTwoFragment) {
             mViewPager.setCurrentItem(2, true);
         } else if (fragment instanceof BePartnerStepThreeFragment) {
-            Toast.makeText(this, "Thanks For Registering", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "Thanks For Registering", Toast.LENGTH_SHORT).show();
 
             Intent i = new Intent(ActivityFullReg.this, MainActivity.class);
             startActivity(i);

@@ -23,25 +23,30 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="30dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <TextView
+
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="Myself"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:backgroundTint="@color/transparent"
+                android:focusable="false" />
 
 
-            <ImageView
+            <Spinner
+                android:id="@+id/spinner_registration"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_arrow_down" />
+                android:layout_height="30dp" />
 
+            <!--<Spinner-->
+                <!--android:id="@+id/spinner_registration"-->
+                <!--android:layout_width="120dp"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:prompt="@string/app_name" />-->
 
         </LinearLayout>
 

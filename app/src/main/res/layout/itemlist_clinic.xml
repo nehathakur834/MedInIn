@@ -107,6 +107,7 @@
                 android:layout_weight="0.2"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginBottom="9dp"
                 android:textSize="@dimen/_8ssp"
                 android:textColor="@color/color_gray"
                 android:text="1 mile"/>
@@ -117,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:textSize="@dimen/_8ssp"
+                android:layout_marginBottom="9dp"
                 android:textColor="@color/color_gray"
                 android:text="mile"/>
 

@@ -23,6 +23,9 @@
         <item name="colorControlActivated">@color/color_blue</item>
 
     </style>
+    <style name="spinner_style">
+        <item name="android:background">@drawable/background_spinner</item>
+    </style>
     <style name="customRatingBar"
         parent="android:style/Widget.Material.RatingBar.Small">
 
@@ -39,10 +42,11 @@
     </style>
 
     <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">#FF939494</item>
     </style>
 
     <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
         <item name="android:textColor">#FF939494</item>
     </style>
+
 </resources>

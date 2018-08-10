@@ -22,7 +22,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.med.medinin.MainActivity;
 import com.med.medinin.R;
+import com.med.medinin.activities.ClinicListActivity;
 import com.med.medinin.activities.MapsActivity2;
+import com.med.medinin.activities.TimeSlotActivity;
 import com.med.medinin.adapter.MorningAdapter;
 import com.med.medinin.model.MorningTimeModel;
 
@@ -67,7 +69,7 @@ public class TimeSlotFragment extends Fragment {
     private static final int NUMBER_COLUMNS_EVENG= 3;
     ImageView search_icon;
     ProgressDialog dialog;
-    TextView hosp_name,hosp_address,hosp_date;
+    TextView hosp_name,hosp_address,hosp_date,textback;
     String hospitalName,hospitalAddress,hospitalDate;
     @Nullable
     @Override
@@ -88,6 +90,16 @@ public class TimeSlotFragment extends Fragment {
         hosp_address=view.findViewById(R.id.txt_hosp_address);
         hosp_name.setText(hospitalName);
         hosp_address.setText(hospitalAddress);
+
+
+        textback=view.findViewById(R.id.timeslot_back);
+        textback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ClinicListActivity.class);
+                startActivity(intent);
+            }
+        });
 
         search_icon=view.findViewById(R.id.img_search_icon);
         search_icon.setOnClickListener(new View.OnClickListener() {
